@@ -1,0 +1,52 @@
+:root {
+  --minibg: #f7f8f2;
+  --minifont: #2b2b2b;
+  --minifield: #157C3E;
+  --minisky: #126F9C;
+  --minisoil: #8b5e34;
+  --minicard: #fff;
+
+  --header-h: 115px;
+}
+
+@font-face {
+  font-family: 'LaundryGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicR.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+* {
+  font-family: 'LaundryGothic';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+body {
+  background: var(--minibg);
+  color: var(--minifont);
+  margin: 0 auto;
+}
+
+/* ✅ 본문은 헤더 높이만큼 아래에서 시작 */
+#app-main {
+  padding-top: var(--header-h);
+  margin: 0 auto;
+}
+
+/* 유틸 */
+.container {
+  max-width: 1440px;
+  padding: 0 16px;
+}
+
+/* .home {
+  max-width: 1440px;
+  margin: 0 auto;
+} */
