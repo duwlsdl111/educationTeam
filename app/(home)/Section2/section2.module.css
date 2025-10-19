@@ -1,0 +1,133 @@
+.sec2 {
+  width: 1300px;
+  height: 910px;
+  /* background-color: aquamarine; */
+}
+
+.sec2title {
+  width: 1000px;
+  height: 70px;
+  background-image: url("/images/titlebar.png");
+  background-repeat: no-repeat;
+  border-radius: 0 25px 25px 0;
+}
+
+.sec2title h2 {
+  font-size: 30.5px;
+  padding: 19px;
+  margin: 20px 0 20px 0;
+}
+
+.map {
+  display: flex;
+}
+
+.krmap {
+  position: relative;
+  width: 452px;
+  height: 720px;
+  margin: 20px 0 0 0;
+}
+
+.krmap img {
+  width: 400px;
+  height: 720px;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.citytitle {
+  position: absolute;
+  top: 0;
+}
+
+.citytitle>p {
+  width: 100px;
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+/*  */
+/*  */
+/*  */
+/* 지역이름위치조정 */
+.gyunggi {
+  position: absolute;
+  top: 145px;
+  left: 125px;
+}
+
+.gangwon {
+  position: absolute;
+  top: 121px;
+  left: 262px;
+}
+
+.chungnam {
+  position: absolute;
+  top: 305px;
+  left: 97px;
+}
+
+.chungbuk {
+  position: absolute;
+  top: 247px;
+  left: 210px;
+  letter-spacing: -2px;
+}
+
+.gyungbuk {
+  position: absolute;
+  top: 330px;
+  left: 304px;
+}
+
+.junbuk {
+  position: absolute;
+  top: 425px;
+  left: 114px;
+}
+
+.junnam {
+  position: absolute;
+  top: 530px;
+  left: 90px;
+}
+
+.gyungnam {
+  position: absolute;
+  top: 475px;
+  left: 244px;
+}
+
+.jeju {
+  position: absolute;
+  top: 688px;
+  left: 58px;
+  letter-spacing: -2px;
+}
+
+/* 팜두 */
+/* 팜두 */
+/* 팜두 */
+.currentmap div {
+  width: 100%;
+  /* 부모 영역 안에서 가득 */
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* 가로 중앙 */
+  align-items: center;
+  /* 세로 중앙 */
+}
+
+.currentmap>div>img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  /* 이미지 비율 유지 */
+  /* 필요하면 위치 미세조정 가능 */
+  /* margin-top: 20px; */
+}

@@ -1,0 +1,639 @@
+.page {
+    --ink: #2c2c2c;
+    --muted: #6b7280;
+    --paper: #fff;
+    --peach: #F7F2E6;
+    --mint: #c0d8c9;
+    --chip: #E47C14;
+    --card: #e8f5e9;
+    --brand: #157C3E;
+
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--ink);
+}
+
+/* Intro (풀블리드) */
+.intro {
+    background: var(--peach);
+    padding: 50px 100px;
+    margin-bottom: 10%;
+
+    /* full-bleed */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.intro h2 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 2;
+}
+
+/* Tabs */
+.faqWrap {
+    background: var(--mint);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 0 0 10% 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px 0;
+}
+
+.tab {
+    background: #e47c1452;
+    border: 1px solid var(--chip);
+    border-bottom: none;
+    padding: 10px 30px;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+    color: #2c2c2c;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.active {
+    background: var(--mint);
+    color: #2c2c2c;
+    border: none;
+    font-size: 1.2rem;
+}
+
+/* FAQ grid - 완전 반응형 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 25px;
+}
+
+/* 카드: 셀 너비에 맞춰 확장, 고정비율 */
+.card {
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    isolation: isolate;
+    cursor: pointer;
+}
+
+.cardText,
+.cardImg {
+    position: absolute;
+    inset: 0;
+}
+
+.cardText {
+    padding: 10px;
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    transition: opacity 220ms ease;
+    z-index: 2;
+}
+
+.cardText h4 {
+    font-size: 1.2rem;
+    color: var(--brand);
+    line-height: 200%;
+}
+
+.cardText p {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 130%;
+}
+
+.catBadge {
+    margin-top: auto;
+    align-self: end;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    background: rgba(255, 222, 158, 0.8);
+    padding: 5px 8px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.cardImg {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 220ms ease;
+}
+
+.cardImg :global(img) {
+    object-fit: cover;
+}
+
+/* Hover: 텍스트 → 이미지 */
+.card:hover .cardText {
+    opacity: 0;
+}
+
+.card:hover .cardImg {
+    opacity: 1;
+}
+
+/* MORE 버튼 */
+.more {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 20px 0;
+    width: 100%;
+    border-top: 1px solid #157C3E;
+    background: transparent;
+    cursor: pointer;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.more:hover {
+    opacity: 0.85;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.writeBtn,
+.writeBtnGhost {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    cursor: pointer;
+    border: 2px solid #1f7a3f;
+}
+
+.writeBtn {
+    background: #cfe7d8;
+    color: #0f3a20;
+}
+
+.writeBtnGhost {
+    background: #fff;
+    color: #1f7a3f;
+}
+
+/* 글쓰기 폼 래퍼 */
+.composeWrap {
+    background: #c0d8c9;
+    /* 이미지와 유사한 연녹색 배경 */
+    border-radius: 10px;
+    padding: 24px 18px 30px;
+    margin-bottom: 10%;
+}
+
+.compose {
+    background: #fff;
+    border-radius: 8px;
+    padding: 22px 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+}
+
+/* 행: 라벨(고정폭) + 입력영역(가변) */
+.formRow {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+    margin: 10px 0 16px;
+}
+
+.labelPill {
+    background: #8fb9a0;
+    color: #fff;
+    font-weight: 900;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 18px;
+    border: 2px solid #5f8f72;
+}
+
+.input {
+    height: 44px;
+    border: 2px solid #84a6b8;
+    border-radius: 8px;
+    padding: 0 12px;
+    outline: none;
+}
+
+.textarea {
+    border: 2px solid #84a6b8;
+    border-radius: 8px;
+    padding: 12px;
+    outline: none;
+    min-height: 220px;
+    resize: vertical;
+}
+
+.fileArea {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.fileBtn {
+    background: #fff;
+    border: 2px solid #e47c14;
+    color: #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.preview {
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #cfd8dc;
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hr {
+    border: none;
+    border-top: 2px solid rgba(21, 124, 62, .3);
+    margin: 10px 0 16px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    border-top: 3px solid #157C3E;
+    margin-top: 12px;
+}
+
+.btnPrimary {
+    background: #fff;
+    color: #0f172a;
+    border: 2px solid #2c6b3d;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.imgFill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #157C3E;
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .15);
+    animation: fadeInOut 2.8s ease forwards;
+    z-index: 9999;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 40px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 40px);
+    }
+}
+
+.editBtn {
+    position: absolute;
+    bottom: 8px;
+    right: 48px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1f7a3f;
+    border: 2px solid #1f7a3f33;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.card:hover .editBtn {
+    opacity: 1;
+}
+
+.editBtn:active {
+    transform: scale(0.96);
+}
+
+.delBtn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    color: #b42318;
+    border: 2px solid #b4231833;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+.card:hover .delBtn {
+    opacity: 1;
+}
+
+.delBtn:hover {
+    background: #ffecec;
+}
+
+.delBtn:active {
+    transform: scale(0.96);
+}
+
+
+/* ========================= Responsive tweaks ========================= */
+/* ===== ✅ 추가: 글쓰기/상단바 반응형 보강 ===== */
+
+/* 💻 Tablet (550px ~ 1023px) — 상단바·폼 조정 */
+@media (min-width: 550px) and (max-width: 1023px) {
+    .topbar {
+        gap: 10px;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        margin-bottom: 6px;
+    }
+
+    .composeWrap {
+        padding: 18px 16px 26px;
+    }
+
+    .compose {
+        padding: 18px 16px;
+    }
+
+    .formRow {
+        gap: 14px;
+    }
+
+    .input {
+        height: 42px;
+    }
+
+    .textarea {
+        min-height: 200px;
+    }
+
+    .fileArea {
+        gap: 10px;
+    }
+
+    .preview {
+        width: 160px;
+        height: 108px;
+    }
+}
+
+/* 📱 Mid-mobile (400px ~ 550px) — 버튼 100%폭, 미리보기 축소 */
+@media (min-width: 400px) and (max-width: 550px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .topbar {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .writeBtn,
+    .writeBtnGhost {
+        width: 30px;
+        /* 정사각형 아이콘 버튼 크기 */
+        height: 30px;
+        border-radius: 50%;
+        font-size: 0;
+        /* 텍스트 숨기기 */
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0;
+    }
+
+    /* ✏️ 글쓰기 버튼 아이콘 */
+    .writeBtn {
+        background-color: #cfe7d8;
+        background-image: url("/icons/pen.svg");
+        /* ✅ 원하는 아이콘 경로로 변경 */
+    }
+
+    /* 📋 목록보기 버튼 아이콘 */
+    .writeBtnGhost {
+        background-color: #fff;
+        background-image: url("/icons/list.svg");
+        /* ✅ 원하는 아이콘 경로로 변경 */
+    }
+
+    /* 탭이 많으면 가로 스크롤 */
+    .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .composeWrap {
+        padding: 16px 12px 22px;
+    }
+
+    .compose {
+        padding: 16px 12px;
+    }
+
+    .formRow {
+        grid-template-columns: 130px 1fr;
+        gap: 12px;
+    }
+
+    .input {
+        height: 42px;
+    }
+
+    .textarea {
+        min-height: 180px;
+    }
+
+    .fileArea {
+        gap: 8px;
+    }
+
+    .preview {
+        width: 140px;
+        height: 96px;
+    }
+
+    .btnPrimary {
+        font-size: 0.9rem;
+    }
+}
+
+/* 📱 Small mobile (320px ~ 400px) — 폼 세로 스택, 터치 우선 */
+@media (min-width: 320px) and (max-width: 400px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .topbar {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .writeBtn,
+    .writeBtnGhost {
+        width: 30px;
+        /* 정사각형 아이콘 버튼 크기 */
+        height: 30px;
+        border-radius: 50%;
+        font-size: 0;
+        /* 텍스트 숨기기 */
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0;
+    }
+
+    /* ✏️ 글쓰기 버튼 아이콘 */
+    .writeBtn {
+        background-color: #cfe7d8;
+        background-image: url("/icons/pen.svg");
+        /* ✅ 원하는 아이콘 경로로 변경 */
+    }
+
+    /* 📋 목록보기 버튼 아이콘 */
+    .writeBtnGhost {
+        background-color: #fff;
+        background-image: url("/icons/list.svg");
+        /* ✅ 원하는 아이콘 경로로 변경 */
+    }
+
+    .tabs {
+        overflow-x: auto;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab {
+        padding: 5px 12px;
+    }
+
+    .composeWrap {
+        padding: 14px 10px 20px;
+    }
+
+    .compose {
+        padding: 14px 10px;
+    }
+
+    .formRow {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    /* 라벨/필드 세로 */
+    .labelPill {
+        width: 90px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+
+    .input {
+        height: 40px;
+    }
+
+    .textarea {
+        min-height: 160px;
+    }
+
+    .fileArea {
+        gap: 8px;
+    }
+
+    .preview {
+        width: 120px;
+        height: 84px;
+    }
+
+    .btnPrimary {
+        width: 100%;
+    }
+}
+
+/* (옵션) 🖥️ Wide 데스크탑(≥1200px)에서 4열로 확장하고 싶다면 */
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
