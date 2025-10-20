@@ -10,6 +10,19 @@ import styles from './shop.module.css';
 
 const PAGE_SIZE = 16;
 
+// ====== 유틸: 접두사/번호/탭매핑/정렬우선순위 ======
+const getPrefix = (id='') => String(id).trim().toLowerCase().split('-')[0] || '';
+const numFromId = (id='') => {
+  const m = String(id).match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : 9999;
+};
+
+// 탭 이름 → 접두사 매핑
+const TAB_PREFIX = { '씨앗': 'seed', '모종': 'seedling', '굿즈': 'goods', '세트': 'set' };
+
+// 전체 탭에서의 정렬 우선순위 (작을수록 먼저)
+const ORDER_BY_PREFIX = { set: 0, goods: 1, seedling: 2, seed: 3 };
+
 export default function ShopPage() {
   const router = useRouter();
   const [tab, setTab] = useState('전체');
@@ -17,19 +30,41 @@ export default function ShopPage() {
   const [toast, setToast] = useState(null);
   const toastTimer = useRef(null);
 
-  const filtered = useMemo(() => (
-    tab === '전체' ? ALL_PRODUCTS : ALL_PRODUCTS.filter((p) => p.cat === tab)
-  ), [tab]);
+  // 탭 필터: cat 혼재 대비 → id 접두사 기준으로 필터링
+  const filtered = useMemo(() => {
+    if (tab === '전체') return ALL_PRODUCTS;
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  useEffect(() => {
-    if (page > totalPages) setPage(totalPages);
-  }, [page, totalPages]);
+    const needPrefix = TAB_PREFIX[tab]; // 예: '씨앗' → 'seed'
+    if (!needPrefix) return ALL_PRODUCTS;
+
+    return ALL_PRODUCTS.filter(p => getPrefix(p.id) === needPrefix);
+  }, [tab]);
+
+  // 전체 탭일 때만 사용자 정의 순서로 정렬
+  const sorted = useMemo(() => {
+    if (tab !== '전체') return filtered;
+
+    const list = [...filtered].sort((a, b) => {
+      const pa = ORDER_BY_PREFIX[getPrefix(a.id)] ?? 99;
+      const pb = ORDER_BY_PREFIX[getPrefix(b.id)] ?? 99;
+      if (pa !== pb) return pa - pb;               // 세트 → 굿즈 → 모종 → 씨앗
+
+      // 동일 그룹 내부 정렬: id 숫자 → 이름 보조
+      const na = numFromId(a.id);
+      const nb = numFromId(b.id);
+      if (na !== nb) return na - nb;
+      return String(a.name).localeCompare(String(b.name), 'ko');
+    });
+    return list;
+  }, [filtered, tab]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  useEffect(() => { if (page > totalPages) setPage(totalPages); }, [page, totalPages]);
 
   const current = useMemo(() => {
     const start = (page - 1) * PAGE_SIZE;
-    return filtered.slice(start, start + PAGE_SIZE);
-  }, [filtered, page]);
+    return sorted.slice(start, start + PAGE_SIZE);
+  }, [sorted, page]);
 
   const onChangeTab = (nextTab) => {
     if (nextTab === tab) return;
@@ -103,7 +138,6 @@ export default function ShopPage() {
                 </div>
               </div>
             </Link>
-
 
             <div className={styles.cardBody}>
               <div className={styles.actions}>

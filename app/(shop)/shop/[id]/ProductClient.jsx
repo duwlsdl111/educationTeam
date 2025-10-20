@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import BackBtn from '../../../components/BackBtn';
 import InfoPanel from './InfoPanel';
@@ -18,6 +18,24 @@ export default function ProductClient({ product, related }) {
     timerRef.current = setTimeout(() => setToast(null), ms);
   };
   useEffect(() => () => timerRef.current && clearTimeout(timerRef.current), []);
+
+  // ✅ 메인 이미지/참조
+  const mainRef = useRef(null);
+  const thumbs = useMemo(
+    () => Array.isArray(product.images) && product.images.length > 0
+      ? product.images
+      : [product.img],
+    [product.images, product.img]
+  );
+  const [mainSrc, setMainSrc] = useState(product.img);
+
+  // 썸네일 클릭 → 메인 변경 + 메인 위치로 스크롤
+  const onPickThumb = (img) => {
+    setMainSrc(img);
+    if (mainRef.current) {
+      mainRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  };
 
   return (
     <main className={styles.page}>
@@ -38,9 +56,10 @@ export default function ProductClient({ product, related }) {
       <section className={styles.top}>
         <div className={styles.topInner}>
           <div className={styles.gallery}>
-            <div className={styles.mainImg}>
+            {/* ✅ 메인이미지 */}
+            <div className={styles.mainImg} ref={mainRef}>
               <Image
-                src={product.img}
+                src={mainSrc}
                 alt={product.name}
                 fill
                 className={styles.mainImage}
@@ -48,17 +67,29 @@ export default function ProductClient({ product, related }) {
               />
             </div>
 
-            <div className={styles.subImgs}>
-              {(product.images ?? []).map((img, i) => (
-                <div key={`${product.id}-sub-${i}`} className={styles.subImgBox}>
-                  <Image
-                    src={img}
-                    alt={`${product.name} 서브이미지 ${i + 1}`}
-                    fill
-                    className={styles.subImg}
-                  />
-                </div>
-              ))}
+            {/* ✅ 썸네일들 (클릭/키보드 가능) */}
+            <div className={styles.subImgs} role="listbox" aria-label="이미지 선택">
+              {thumbs.map((img, i) => {
+                const selected = img === mainSrc;
+                return (
+                  <button
+                    type="button"
+                    key={`${product.id}-sub-${i}`}
+                    className={`${styles.subImgBox} ${selected ? styles.selected : ''}`}
+                    onClick={() => onPickThumb(img)}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onPickThumb(img)}
+                    aria-selected={selected}
+                    aria-label={`이미지 ${i + 1} 보기`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} 서브이미지 ${i + 1}`}
+                      fill
+                      className={styles.subImg}
+                    />
+                  </button>
+                );
+              })}
             </div>
           </div>
 
