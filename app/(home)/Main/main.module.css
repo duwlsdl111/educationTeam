@@ -1,0 +1,222 @@
+.home {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.main1 {
+  width: 100%;
+  height: 800px;
+  position: relative;
+  top: 0;
+  margin: 0 auto 10% auto;
+}
+
+.videoWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main1 > .text {
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%);
+  top: 40px;
+  z-index: 1;
+}
+
+.main1 > .character {
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-50%);
+  top: 500px;
+  z-index: 1;
+}
+
+.main2 {
+  width: 1300px;
+  height: 910px;
+  margin: 10% auto 10% 0;
+}
+
+.seedtotable {
+  width: 1000px;
+  height: 70px;
+  background-image: url("/images/titlebar.png");
+  /* 이미지 경로 */
+  background-repeat: no-repeat;
+  /* 반복 방지 */
+  border-radius: 0 25px 25px 0;
+}
+
+.seedtotable > h2 {
+  font-size: 30.5px;
+  /* font-weight: normal; */
+  padding: 19px;
+  margin: 20px 0 20px 0;
+}
+
+.main2banner {
+  width: 1062px;
+  height: 695px;
+  background-color: antiquewhite;
+}
+
+.banner {
+  width: 100%;
+  overflow: hidden;
+  height: 695px;
+  position: relative;
+  border-radius: 25px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  border-radius: 10px;
+}
+
+.slideItem {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  /* 텍스트 중앙 배치를 위해 필요 */
+}
+
+.slideItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+.slideText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.slideText h2 {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.slideText p {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.main2btn {
+  padding: 12px 25px;
+  background-color: #fff;
+  color: #157c3e;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* 슬라이드 컨트롤러 박스 */
+.slideController {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.controlBox {
+  width: 86px;
+  height: 10px;
+  background-color: #157c3e;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.controlBox.activeBox {
+  background-color: #e47c14;
+}
+.movingbox {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 341px;
+  height: 625px;
+  background-color: #fdf4de;
+  border: 2.25px solid #f0b879;
+  border-radius: 11.25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수평 중앙 */
+  gap: 10px;
+  color: #fff;
+  font-weight: bold;
+    opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.movingbox > img {
+  max-width: 80%;
+}
+
+.boxList {
+  display: flex;
+  justify-content: center; /* 수직 중앙 */
+  align-items: center; /* 수평 중앙 */
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  height: 153px; /* 박스 영역 높이 */
+}
+
+.boxList li {
+  /* background-color: #ffb6b6; */
+  width: 122px;
+  height: 143px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.boxList > li > img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* ✨ 부드러운 그림자 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.boxList > li > p {
+  color: #000;
+  text-align: center;
+}
+
+.chatfarmdu {
+  width: 126px;
+  height: 162px;
+  margin-left: 140px;
+  margin-bottom: 10px;
+}
+.chatfarmdu > li > img {
+  padding-bottom: 20px;
+}

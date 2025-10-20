@@ -1,0 +1,577 @@
+.chat {
+    --bg: #f6cfae;
+    --paper: #ffffff;
+    --ink: #2c2c2c;
+    --muted: #8b8b8b;
+    --brand: #2a9a51;
+    --brand-600: #1f7a3f;
+    --brand-200: #daf0e2;
+    --notice: #fff3e0;
+    --line: #e9e0d7;
+
+    --radius-xl: 18px;
+    --radius-lg: 14px;
+    --radius-md: 10px;
+
+    --shadow-1: 0 2px 6px rgba(0, 0, 0, .08);
+    --shadow-2: 0 6px 14px rgba(0, 0, 0, .12);
+
+    font-family: ui-sans-serif, system-ui, "Noto Sans KR", Apple SD Gothic Neo, Arial, sans-serif;
+}
+
+.chat * {
+    box-sizing: border-box;
+}
+
+.chat {
+    width: 393px;
+    height: 770px;
+    margin: 0 auto;
+    background: var(--bg);
+    box-shadow: var(--shadow-2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0 0 20px 20px;
+    color: var(--ink);
+}
+
+/*  */
+/*  */
+/*  */
+/* 헤더 */
+/*  */
+/*  */
+/*  */
+
+.chatHeader {
+    height: 65px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.chatLogo {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*  */
+/*  */
+/*  */
+/* 버튼 */
+/*  */
+/*  */
+/*  */
+
+.chatMenuBtn {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    margin-bottom: -20px;
+    background: #fff;
+    cursor: pointer;
+    transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+
+.chatMenuBtn:hover {
+    background: #faf7f3;
+    box-shadow: var(--shadow-1);
+}
+
+.chatMenuBtn:active {
+    transform: scale(0.98)
+}
+
+/*  */
+/*  */
+/*  */
+/* 메인 */
+/*  */
+/*  */
+/*  */
+
+.chatMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 12px 0;
+    gap: 10px;
+    overflow: hidden;
+}
+
+/*  */
+/*  */
+/*  */
+/* 알림 */
+/*  */
+/*  */
+/*  */
+
+.chatNotice {
+    background: var(--notice);
+    border: 1px solid #f1d5b2;
+    border-radius: var(--radius-lg);
+    padding: 10px 12px 10px 36px;
+    position: relative;
+    font-size: 0.9rem;
+    color: #634b2e;
+    min-height: 36px;
+}
+
+.chatNotice::before {
+    content: "📣";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+/*  */
+/*  */
+/*  */
+/* 채팅영역 */
+/*  */
+/*  */
+/*  */
+
+.chatChatting {
+    flex: 1;
+    overflow: auto;
+    padding: 4px 4px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #c8b9a9 transparent;
+}
+
+.chatChatting::-webkit-scrollbar {
+    width: 6px
+}
+
+.chatChatting::-webkit-scrollbar-thumb {
+    background: #c8b9a9;
+    border-radius: 999px
+}
+
+/*  */
+/*  */
+/*  */
+/* 자동완성 */
+/*  */
+/*  */
+/*  */
+.chatAuto {
+    height: 24px;
+    border-radius: 12px;
+    background: #167f3a10;
+    color: #167f3a;
+    font-size: 0.852rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.bot {
+    justify-content: flex-start;
+}
+
+.user {
+    justify-content: flex-end;
+}
+
+/*  */
+/*  */
+/*  */
+/* 메세지 */
+/*  */
+/*  */
+/*  */
+.msgCol {
+    display: flex;
+    flex-direction: column;
+    max-width: 85vw;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f3eadf url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><circle cx="14" cy="10" r="6" fill="%23a35b3a"/><rect x="4" y="16" width="20" height="8" rx="4" fill="%23f2b88a"/></svg>') center/cover no-repeat;
+    flex: 0 0 28px;
+}
+
+.avatarBot,
+.avatarUser {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .05);
+    flex: 0 0 28px;
+}
+
+.bot .avatarBot {
+    order: 0;
+}
+
+.user .avatarUser {
+    order: 2;
+}
+
+.bubble {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 12px;
+    box-shadow: var(--shadow-1);
+    line-height: 1.35;
+    font-size: 1rem;
+}
+
+.bot .bubble {
+    max-width: 230px;
+    border-top-left-radius: 6px;
+}
+
+.user .bubble {
+    max-width: 230px;
+    background: #eef8f1;
+    border-color: #d1ead9;
+    color: #10391f;
+    border-top-right-radius: 6px;
+    margin-left: auto;
+    /* ← 오른쪽 정렬 핵심 */
+    text-align: left;
+    /* 본문은 좌정렬 유지 */
+}
+
+.meta {
+    font-size: 0.852rem;
+    color: var(--ink);
+    margin-top: 6px;
+}
+
+.user .meta {
+    text-align: right;
+    margin-right: 4px;
+}
+
+
+/*  */
+/*  */
+/*  */
+/* 푸터/인풋 */
+/*  */
+/*  */
+/*  */
+.chat>.chatAuto,
+.chat>.chatAuto+.chatAuto,
+.chat>.chatAuto:last-child,
+.chat>.chatAuto~.chatAuto,
+.chat>.chatAuto+.whatever {
+    display: none;
+}
+
+.chatChattingBar {
+    padding: 8px 10px;
+    background: #fff;
+    border: 2px solid #1f7a3f;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 60px;
+    margin: 10px;
+}
+
+.chatReset,
+.chatSubmit {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--brand);
+    color: #fff;
+    flex: 0 0 36px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 var(--brand-600) inset;
+}
+
+.chatSubmit[disabled],
+.chatSubmit[aria-disabled="true"] {
+    box-shadow: none;
+}
+
+.chatChattingBar input {
+    width: 200px;
+    height: 50px;
+    flex: 1;
+    outline: none;
+    padding: 0 14px;
+    font-size: 1rem;
+    color: var(--ink);
+}
+
+.chat input::placeholder {
+    color: #93a096;
+}
+
+/*  */
+/*  */
+/*  */
+/* 메뉴 */
+/*  */
+/*  */
+/*  */
+.menuPanel {
+    position: absolute;
+    right: 12px;
+    top: 70px;
+    width: 170px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 20;
+}
+
+.menuPanel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.menuItem {
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #222;
+    cursor: pointer;
+}
+
+.menuItem:hover {
+    background: #f4f2ef
+}
+
+/*  */
+/*  */
+/*  */
+/* 자동완성 */
+/*  */
+/*  */
+/*  */
+.typeahead {
+    margin: 6px 10px 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-2);
+    padding: 8px;
+    max-height: 160px;
+    overflow: auto;
+    display: grid;
+    gap: 6px;
+}
+
+.typeItem {
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #e8efe9;
+    background: #f7fbf8;
+    font-size: 13px;
+    color: #0e3c22;
+    cursor: pointer;
+}
+
+.typeItem:hover {
+    background: #eef7f1;
+    border-color: #d7ece0;
+}
+
+/*  */
+/*  */
+/*  */
+/* 토글바 */
+/*  */
+/*  */
+/*  */
+.autoDock {
+    margin-left: -12px;
+    margin-right: -12px;
+    /* 메인 패딩만큼 빼기 */
+    padding: 0 10px;
+    /* 내부 여백은 유지 */
+    background: var(--brand);
+    color: #fff;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    position: relative;
+}
+
+.autoDock::before {
+    content: "";
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -6px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.switch {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    border-radius: 999px;
+    background: #fff;
+    border: 2px solid #E47C14;
+    padding: 0;
+    cursor: pointer;
+}
+
+.knob {
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #167f3a;
+    transform: translateY(-50%);
+    transition: left .18s ease;
+}
+
+.switch.on .knob {
+    left: 18px;
+}
+
+.switch.off {
+    border-color: #E47C14;
+}
+
+.switch.off .knob {
+    background: #9aa1a6;
+}
+
+/*  */
+/*  */
+/*  */
+/* 버튼메뉴 */
+/*  */
+/*  */
+/*  */
+.badgeGrid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.badgeBtn {
+    --capsule-bg: #cfe0ee;
+    /* 하늘색 캡슐 배경 */
+    --capsule-br: #9fb7c9;
+    /* 테두리 */
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    height: auto;
+    border-radius: 999px;
+    background: var(--capsule-bg);
+    border: 1.5px solid var(--capsule-br);
+    cursor: pointer;
+    transition: transform .05s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.badgeBtn:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+    background: #d8e6f1;
+}
+
+.badgeBtn:active {
+    transform: translateY(1px);
+}
+
+.badgeLabel {
+    font-size: 13px;
+    color: #2c2c2c;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+}
+
+.badgeIco {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.badgeIco[data-kind="씨앗안내"] {
+    background-image: url("/images/seed.png");
+}
+
+.badgeIco[data-kind="모종안내"] {
+    background-image: url("/images/sprout.png");
+}
+
+.badgeIco[data-kind="농장안내"] {
+    background-image: url("/images/farm.png");
+}
+
+.badgeIco[data-kind="예약안내"] {
+    background-image: url("/images/calendar.png");
+}
+
+.badgeIco[data-kind="배송안내"] {
+    background-image: url("/images/truck.png");
+}
+
+.badgeIco[data-kind="기타안내"] {
+    background-image: url("/images/more.png");
+}
+
+.bot .bubble .badgeGrid {
+    margin-top: 12px;
+}

@@ -1,0 +1,63 @@
+.sec5 {
+  width: 1300px;
+  height: 820px;
+  margin: 10% auto 5% 0;
+}
+
+.sec5title {
+  width: 1000px;
+  height: 70px;
+  background-image: url("/images/titlebar.png");
+  background-repeat: no-repeat;
+  border-radius: 0 25px 25px 0;
+}
+
+.sec5title h2 {
+  font-size: 30.5px;
+  padding: 19px;
+  margin: 20px 0 20px 0;
+  color: #2c2c2c;
+}
+
+.sec5content {
+  width: 1062px;
+  height: 610px;
+
+  margin-top: 50px;
+  padding-top: 50px;
+  overflow: hidden;
+}
+
+.sec5content>ul:nth-child(1) {
+  margin-bottom: 65px;
+  margin-top: 50px;
+}
+
+.sec5content>ul {
+  width: 1000px;
+  height: 200px;
+  display: flex;
+  overflow-x: hidden;
+  /* 드래그 없이 자동 스크롤 */
+  overflow-y: hidden;
+  gap: 26px;
+  padding: 0;
+  margin: 0;
+}
+
+.sec5content>ul::-webkit-scrollbar {
+  display: none;
+}
+
+.sec5content>ul>li {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.sec5content>ul>li>img {
+  width: 200px;
+  height: 200px;
+}
