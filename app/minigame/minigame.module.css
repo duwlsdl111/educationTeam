@@ -1,0 +1,506 @@
+.minigame {
+    --minifont: #2a2a2a;
+    --minibg: #e2ddd4;
+    --minicard: #ffffff;
+    --minisky: #e8f4ff;
+    --minisoil: #e6d3ab;
+    --minifield: #42b36a;
+
+    font-family: system-ui, -apple-system, "Noto Sans KR", sans-serif;
+    color: var(--minifont);
+    background: var(--minibg);
+    line-height: 1.4;
+
+    margin: 0;
+    overflow-y: auto;
+}
+
+.miniG_wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 8px 10px 16px;
+}
+
+.miniG_wrap * {
+    box-sizing: border-box;
+}
+
+/*  */
+/*  */
+/*  */
+/* 헤더 */
+/*  */
+/*  */
+/*  */
+
+.miniG_header {
+    position: sticky;
+    top: 6px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--minicard);
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, .06);
+}
+
+.miniG_title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.miniG_title b {
+    font-size: .95rem;
+    white-space: nowrap;
+}
+
+.miniG_badge {
+    width: 32.333%;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 15px;
+    background: #fff;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.miniG_score {
+    font-weight: 700;
+    font-size: .9rem;
+    white-space: nowrap;
+}
+
+/*  */
+/*  */
+/*  */
+/* 툴바 */
+/*  */
+/*  */
+/*  */
+
+.miniG_toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 10px 0 8px;
+}
+
+.miniG_tool {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: var(--minicard);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
+}
+
+.miniG_tool>strong,
+.miniG_tool>span {
+    font-size: .9rem;
+}
+
+/*  */
+/*  */
+/*  */
+/* 공통툴바 */
+/*  */
+/*  */
+/*  */
+
+.miniG_tool button {
+    margin-left: auto;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    background: var(--minifield);
+    color: #fff;
+    font-weight: 800;
+    font-size: .85rem;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .07);
+}
+
+.miniG_tool button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/*  */
+/*  */
+/*  */
+/* 씨앗선택버튼 */
+/*  */
+/*  */
+/*  */
+
+.miniG_seed_picker {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.miniG_seed_picker::-webkit-scrollbar {
+    display: none;
+}
+
+.miniG_tool .miniG_seed {
+    margin-left: 0;
+    background: #fff;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, .08);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.miniG_active {
+    outline: 2px solid var(--minifield);
+}
+
+.miniG_seedIcon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.miniG_seedLabel {
+    display: inline-block;
+}
+
+.sr_only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/*  */
+/*  */
+/*  */
+/* 메인 */
+/*  */
+/*  */
+/*  */
+
+.miniG_field {
+    background: linear-gradient(180deg, var(--minisky) 0 44%, var(--minisoil) 44% 100%);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .05);
+}
+
+.miniG_plots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.miniG_plot {
+    position: relative;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(0, 0, 0, .05);
+    border: 1px dashed rgba(0, 0, 0, .14);
+    border-radius: 10px;
+}
+
+.miniG_empty::after {
+    content: "씨앗을 심어보자!";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 58px;
+    text-align: center;
+    padding: 5px 8px;
+    font-size: .85rem;
+    border-radius: 8px;
+    background: #ffffffcc;
+}
+
+.miniG_plant {
+    font-size: 44px;
+    text-align: center;
+    filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .06));
+}
+
+.miniG_bars {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.miniG_bar {
+    height: 8px;
+    background: #e9e9e9;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.miniG_bar>i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--minifield);
+    transition: width .2s ease;
+}
+
+.miniG_sun>i {
+    background: #ffd166;
+}
+
+.miniG_water>i {
+    background: #4cc9f0;
+}
+
+.miniG_health>i {
+    background: #06d6a0;
+}
+
+/*  */
+/*  */
+/*  */
+/* 컨트롤 버튼 */
+/*  */
+/*  */
+/*  */
+
+.miniG_controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.miniG_controls button {
+    padding: 6px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    background: #fff;
+    font-weight: 800;
+    font-size: .86rem;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .07);
+}
+
+/*  */
+/*  */
+/*  */
+/* 푸터/토스트 */
+/*  */
+/*  */
+/*  */
+
+.miniG_footer {
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--minicard);
+    border-radius: 10px;
+}
+
+.miniG_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.miniG_resetBtn {
+    display: inline-flex;
+    margin-top: 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    background: #fff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.miniG_toast {
+    position: fixed;
+    left: 50%;
+    bottom: 110px;
+    transform: translateX(-50%);
+    background: #111;
+    color: #fff;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-weight: 800;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .25s;
+}
+
+.miniG_show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px);
+}
+
+.miniG_seed_score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px 0 4px;
+}
+
+@supports (padding:max(0px)) {
+    .miniG_footer {
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+}
+
+
+/*  */
+/*  */
+/*  */
+/* 반응형 */
+/*  */
+/*  */
+/*  */
+
+@media (min-width: 1024px) {
+    .minigame {
+        width: 100%;
+        height: 100dvh;
+        margin: 0 auto;
+    }
+
+    .miniG_wrap {
+        max-width: 560px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 1023px) {
+    .minigame {
+        width: 100%;
+        height: 100dvh;
+        margin: 0 auto;
+    }
+
+    .miniG_wrap {
+        padding: 8px 8px 14px;
+    }
+
+    .miniG_plots {
+        gap: 8px;
+    }
+
+
+}
+
+@media (min-width: 400px) and (max-width: 550px) {
+    .minigame {
+        width: 100%;
+        height: 100dvh;
+    }
+
+    .miniG_wrap {
+        max-width: 100%;
+        padding: 8px 8px 12px;
+    }
+
+    .miniG_plots {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .miniG_tool .miniG_seed {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        font-size: 0;
+    }
+
+    .miniG_seedLabel {
+        display: none;
+    }
+
+    .miniG_seedIcon {
+        font-size: 22px;
+    }
+
+    .miniG_badge {
+        width: 49%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 20px;
+        background: #fff;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, .06);
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+    .miniG_score {
+        font-size: 12px;
+    }
+
+    .miniG_plots {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .miniG_tool .miniG_seed {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        font-size: 0;
+    }
+
+    .miniG_seedLabel {
+        display: none;
+    }
+
+    .miniG_seedIcon {
+        font-size: 22px;
+    }
+
+    .miniG_badge {
+        width: 99%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 15px;
+        background: #fff;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, .06);
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+}

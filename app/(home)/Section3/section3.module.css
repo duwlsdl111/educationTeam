@@ -1,0 +1,305 @@
+.sec3 {
+  width: 1300px;
+  height: 830px;
+  margin: 10% auto 10% 0;
+}
+
+.sec3title {
+  width: 1000px;
+  height: 70px;
+  background-image: url("/images/titlebar.png");
+  background-repeat: no-repeat;
+  border-radius: 0 25px 25px 0;
+}
+
+.sec3title h2 {
+  font-size: 30.5px;
+  padding: 19px;
+  margin: 20px 0 20px 0;
+}
+
+.sec3content {
+  display: flex;
+}
+
+.weatherfarmdu {
+  width: 308px;
+  height: 341px;
+  margin: 380px 20px 0 0;
+  /* background-color: antiquewhite; */
+}
+
+.weatherfarmdu {
+  object-fit: cover;
+}
+
+.weatherinfo {
+  width: 722px;
+  height: 623px;
+  margin: 98px 0 0 0;
+}
+
+.weathertext {
+  width: 100%;
+  height: 133px;
+  list-style: none;
+  display: flex;
+  border-radius: 37.5px 37.5px 0 0;
+  background-color: #86bda6;
+}
+
+.weathericon {
+  width: 100px;
+  height: 100px;
+  margin: 18px 0 0 100px;
+  /* background-color: #e47c14; */
+}
+
+.weathertext>ul {
+  flex: none;
+}
+
+.weathertext>ul>li {
+  margin-top: 30px;
+  margin-left: 45px;
+  list-style: none;
+  font-size: 26.25;
+  color: #fff;
+}
+
+.weathertext>ul>li:nth-child(2) {
+  margin-top: 30px;
+  margin-left: 45px;
+  display: flex;
+  list-style: none;
+  font-size: 26.25;
+  color: #fff;
+}
+
+.weathertext>ul>li:nth-child(2)>p {
+  margin-right: 20px;
+}
+
+.vegetable {
+  position: relative;
+  width: 100%;
+  height: 490px;
+  list-style: none;
+  border-radius: 0 0 15px 15px;
+  background-color: #f7d8b9;
+  /* opacity: 0.3; */
+}
+
+.vegetableItem {
+  position: relative;
+  /* 기존 스타일 유지 */
+}
+
+.vegetable>ul>li {
+  cursor: pointer;
+}
+
+.vegetablelist1 {
+  display: flex;
+  padding-top: 50px;
+  justify-content: space-between;
+}
+
+.vegetablelist1>li {
+  width: 129px;
+  height: 161px;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.vegetablelist1>li:nth-child(1) {
+  margin-left: 10px;
+}
+
+.vegetablelist1>li:nth-child(5) {
+  margin-right: 10px;
+}
+
+.vegetablelist1>li>div {
+  width: 129px;
+  height: 129px;
+  border-radius: 0 75px 75px 75px;
+  background-color: #fff;
+}
+
+.vegetablelist1>li>div>img {
+  width: 106px;
+  height: 106px;
+  margin: 10px 0 0 10px;
+}
+
+.vegetablelist1>li>p {
+  text-align: center;
+  padding: 10px;
+  font-size: 18.75px;
+  color: #000;
+  z-index: 1;
+  opacity: none;
+}
+
+.vegetablelist2 {
+  display: flex;
+  padding-top: 50px;
+  justify-content: space-between;
+}
+
+.vegetablelist2>li {
+  width: 129px;
+  height: 161px;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.vegetablelist2>li:nth-child(1) {
+  margin-left: 10px;
+}
+
+.vegetablelist2>li:nth-child(5) {
+  margin-right: 10px;
+}
+
+.vegetablelist2>li>div {
+  width: 129px;
+  height: 129px;
+  border-radius: 0 75px 75px 75px;
+  background-color: #fff;
+}
+
+.vegetablelist2>li>div>img {
+  width: 106px;
+  height: 106px;
+  margin: 10px 0 0 10px;
+}
+
+.vegetablelist2>li>p {
+  text-align: center;
+  padding: 10px;
+  font-size: 18.75px;
+  color: #000;
+  z-index: 1;
+  opacity: none;
+}
+
+.vegGuide {
+  position: absolute;
+  top: 0;
+  /* ul 기준으로 원하는 위치 */
+  left: 0;
+  width: 95.5%;
+  /* ul 전체 가로 */
+  height: 93.5%;
+  z-index: 1000;
+  background-color: #f7d8b9;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.vegGuide>ul {
+  display: flex;
+}
+
+.vegGuide>ul>li {
+  list-style: none;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.vegGuidetitle>li:nth-child(1) {
+  width: 360px;
+  font-size: 30px;
+}
+
+.vegGuidetitle>li:nth-child(2) {
+  font-size: 13px;
+  color: #7b6c5d;
+  margin-top: 33px;
+  margin-left: 220px;
+  cursor: pointer;
+}
+
+.vegGuidebox>.vegGuideimg {
+  width: 205px;
+  height: 206px;
+  background-color: #fff;
+  margin-top: 90px;
+  margin-left: 20px;
+  border-radius: 0 63px 63px 63px;
+  padding: 0;
+  gap: 0;
+}
+
+.vegGuideimg>img {
+  width: 170px;
+  height: 170px;
+  margin: 10px 0 0 13px;
+}
+
+.vegGuidebox>.vegGuidetext {
+  width: 420px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+  padding: 0;
+  gap: 0;
+}
+
+.vegGuidetext>ul>li {
+  list-style: none;
+}
+
+.vegGuidetext>ul>li>img {
+  margin-top: 40px;
+  width: 63px;
+  height: 63px;
+}
+
+.vegGuidetext>ul>.home {
+  width: 420px;
+  height: 140px;
+  /* background-color: blue; */
+  display: flex;
+}
+
+.hometext {
+  width: 350px;
+  height: 140px;
+  background-color: #ffffff;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vegGuidetext>ul>.outdoor {
+  width: 420px;
+  height: 140px;
+  margin-top: 48px;
+  /* background-color: rgb(197, 44, 159); */
+  display: flex;
+}
+
+.outdoortext {
+  width: 350px;
+  height: 140px;
+  background-color: #ffffff;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vegGuide p {
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}

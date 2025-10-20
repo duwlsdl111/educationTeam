@@ -1,0 +1,118 @@
+.detailWrap {
+  max-width: 1440px;
+  margin: 100px auto;
+  color: #333;
+  line-height: 1.8;
+}
+
+.titleBox {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.mainTitle {
+  width: 100%;
+  /* 💡 전체 가로 폭으로 확장 */
+  max-width: 1440px;
+  margin: 2% auto;
+  /* 중앙 정렬 */
+  text-align: center;
+  height: 80px;
+  font-size: 1.5rem;
+  letter-spacing: .2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #E47C14;
+  border-bottom: 2px solid #E47C14;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.subTitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  background-color: #E47C14;
+  color: azure;
+}
+
+.heroImage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: -50px;
+}
+
+.heroImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.heroText h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.heroText p {
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.contentSection {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.imageText {
+  text-align: center;
+}
+
+.imageText img {
+  width: 80%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.imageText p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.metaBox {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 60px;
+}
+
+.paragraph {
+  white-space: pre-line;
+  line-height: 1.8;
+}
+
+.error {
+  font-size: 2rem;
+  text-align: center;
+  padding: 100px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .heroText {
+    left: 15px;
+    bottom: 20px;
+  }
+
+  .heroText h3 {
+    font-size: 1.4rem;
+  }
+
+  .heroText p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,634 @@
+/* ========== Page base ========== */
+.page {
+    --ink: #2c2c2c;
+    --muted: #6b746d;
+    --bg: #fff;
+    --surface: #e2efe5;
+    --soft: #6EA283;
+    --brand: #157c3e;
+    --brand-2: #0e5d2d;
+    --radius: 14px;
+    --shadow: 0 6px 24px rgba(20, 50, 30, 0.08);
+
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    color: var(--ink);
+    background: #fff;
+}
+
+/* ========== Header / Notice ========== */
+.header {
+    margin: 0 10px;
+}
+
+.noticeBar {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.noticeImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.title {
+    height: 80px;
+    border: 2px solid var(--brand);
+    border-left: none;
+    border-right: none;
+    font-size: 1.5rem;
+    letter-spacing: .2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ink);
+    margin: 10% 0;
+}
+
+/* ========== Top layout ========== */
+.top {
+    max-width: 1350px;
+    background: var(--soft);
+    border-radius: 10px 10px 0 0;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.topInner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+/* ========== Gallery ========== */
+.gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.mainImg {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* 정사각형 비율 */
+    overflow: hidden;
+}
+
+.mainImage {
+    object-fit: cover;
+}
+
+/* ✅ JSX에서 사용 */
+.subImgs {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.subImgBox {
+    position: relative;
+    width: 22%;
+    padding-top: 22%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.subImg {
+    object-fit: cover;
+    transition: transform .2s ease;
+    background-color: #fff;
+}
+
+.subImg:hover {
+    transform: scale(1.05);
+}
+
+/* ========== Info card (aside) ========== */
+.info {
+    width: 100%;
+    background: #fff;
+    padding: 27px 40px;
+    border-radius: 10px;
+}
+
+.infoTitle {
+    font-weight: 800;
+    margin: 6px 0 10px;
+}
+
+.priceMain {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.section {
+    margin: 30px 0;
+}
+
+.sectionTitle {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+}
+
+.bullets li {
+    display: flex;
+    gap: 8px;
+    line-height: 200%;
+}
+
+.bulletDot {
+    font-weight: 400;
+}
+
+.en {
+    opacity: .8;
+}
+
+.selectRow {
+    margin: 20px 0;
+}
+
+.selectLabel {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.qtyWrap {
+    margin: 20px 0;
+}
+
+.qtyLabel {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.qtyBox {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #157c3e;
+    background: #fff;
+    border-radius: 10px;
+    height: 48px;
+}
+
+.qtyBox button {
+    height: 100%;
+    font-size: 18px;
+    background: transparent;
+}
+
+.qtyBox input {
+    text-align: center;
+    background: transparent;
+    font-weight: 700;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dashed #d9d9d9;
+    border-left: 0;
+    border-right: 0;
+    padding: 12px 0;
+    margin: 20px 0;
+}
+
+.totalLabel {
+    font-weight: 700;
+}
+
+.totalPrice {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.shipNote {
+    font-size: 12px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.ctaBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.btnCart,
+.btnPay {
+    height: 56px;
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 14px;
+}
+
+.btnCart {
+    background: #ffedd5;
+    border: 2px solid #f59e0b;
+}
+
+.btnPay {
+    background: #e6f4ea;
+    border: 2px solid #157c3e;
+}
+
+/* ========== InfoTabs ========== */
+.infoinner {
+    width: 100%;
+}
+
+.infoTabBtn {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+
+.tabBtn {
+    width: 20%;
+    border: none;
+    padding: 15px 14px;
+    border-radius: 10px 10px 0 0;
+    background: #1a6b3f;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: 5%;
+}
+
+.tabActive {
+    background: var(--bg);
+    color: #2c2c2c;
+}
+
+.infoText {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.infoTitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.bullets {
+    margin-top: 8px;
+    margin-left: 16px;
+}
+
+.metaList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.metaList li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #dbe6dd;
+    font-size: 14px;
+}
+
+.backRow {
+    font-size: 1rem;
+    text-align: right;
+    margin-top: 2%;
+    margin-right: 3%;
+}
+
+/* ========== 함께 보면 좋은 상품 섹션 ========== */
+.related {
+    max-width: 1350px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.relatedTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* ✅ 초록 배경의 바깥 박스 (내용 넘치면 잘라냄) */
+.relatedBox {
+    background: #6da47b;
+    padding: 24px 0 24px 24px;
+    overflow: hidden;
+}
+
+/* ✅ 가로 스크롤 레일 (스크롤바 숨김 + 드래그 가능) */
+.rail {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    /* 제스처 충돌 최소화 */
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+}
+
+/* 스크롤바 숨김 (크로스 브라우저) */
+.rail::-webkit-scrollbar {
+    display: none;
+}
+
+/* Chrome/Safari */
+.rail {
+    scrollbar-width: none;
+}
+
+/* Firefox */
+.rail {
+    -ms-overflow-style: none;
+}
+
+/* old IE/Edge */
+
+/* 드래깅 상태 */
+.rail.dragging {
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 카드 링크 */
+.card {
+    flex: 0 0 auto;
+    width: 200px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    background: #f6f6f4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* 썸네일 감싸는 박스 */
+.thumbWrap {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 이미지 (GPU 합성 레이어) */
+.thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform .24s ease;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.card:hover .thumb {
+    transform: scale(1.06);
+}
+
+/* ✅ 호버 오버레이 (드래그와 충돌 방지) */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, .45);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+    /* 드래그 이벤트 가로채지 않음 */
+    will-change: opacity, transform;
+    transform: translateZ(0);
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 드래그 중엔 hover 효과 비활성화 */
+.rail.dragging .card:hover .overlay {
+    opacity: 0 !important;
+    transform: none !important;
+}
+
+.rail.dragging .card:hover .thumb {
+    transform: none !important;
+}
+
+.rail.dragging .overlay {
+    transition: none !important;
+}
+
+/* 텍스트 */
+.name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+.price {
+    font-size: .95rem;
+    font-weight: 600;
+}
+
+/* 접근성: 모션 최소화 환경 */
+@media (prefers-reduced-motion: reduce) {
+
+    .thumb,
+    .overlay {
+        transition: none !important;
+    }
+}
+
+/* ========== Responsive ========== */
+@media (min-width: 550px) and (max-width: 1023px) {
+    .noticeBar {
+        height: 250px;
+    }
+
+    .topInner {
+        flex-direction: column;
+    }
+
+    .top {
+        padding: 30px;
+    }
+
+    .info {
+        position: sticky;
+        top: 8px;
+    }
+
+    .page {
+        margin-bottom: 80px;
+    }
+}
+
+@media (min-width: 393px) and (max-width: 549px) {
+    .top {
+        padding: 20px;
+    }
+
+    .noticeBar {
+        height: 150px;
+    }
+
+    .title {
+        height: 50px;
+        border: 2px solid var(--brand);
+        border-left: none;
+        border-right: none;
+        font-size: 16px;
+        letter-spacing: .1px;
+    }
+
+    .topInner {
+        flex-direction: column;
+    }
+
+    .subImgs {
+        gap: 5px;
+    }
+
+    .subImg {
+        width: 30%;
+        padding-top: 30%;
+    }
+
+    .btnPrimary,
+    .btnGhost {
+        font-size: 14px;
+    }
+
+    .infoTabBtn button {
+        font-size: 16px;
+        padding: 8px 0;
+    }
+
+    .infoText {
+        font-size: 14px;
+    }
+
+    .info {
+        padding: 5px;
+    }
+
+    .info * {
+        transform: scale(0.95)
+    }
+}
+
+@media (min-width: 320px) and (max-width: 392px) {
+    .top {
+        padding: 20px;
+    }
+
+    .noticeBar {
+        height: 150px;
+    }
+
+    .title {
+        height: 50px;
+        border: 2px solid var(--brand);
+        border-left: none;
+        border-right: none;
+        font-size: 15px;
+        letter-spacing: .1px;
+    }
+
+    .topInner {
+        flex-direction: column;
+    }
+
+    .subImgs {
+        gap: 5px;
+    }
+
+    .subImg {
+        width: 45%;
+        padding-top: 45%;
+    }
+
+    .infoTabBtn {
+        gap: 1px;
+    }
+
+    .infoTabBtn button {
+        width: auto;
+        font-size: 13px;
+        font-weight: 400;
+        text-wrap: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .infoText {
+        font-size: 10px;
+        border-radius: 5px;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .info {
+        padding: 5px;
+    }
+
+    .info * {
+        transform: scale(0.90)
+    }
+
+    .bullets li {
+        margin-left: -10%;
+    }
+}
