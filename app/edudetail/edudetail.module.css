@@ -18,6 +18,7 @@
 /* 전체 랩 */
 .edu_detail_wrap {
     width: 1440px;          /* 고정 폭 */
+    height: 1600px;
     margin: 0 auto;         /* 화면 중앙 정렬 */
     padding: 0;
     position: relative;     /* 이미지 절대 위치용 */
@@ -87,7 +88,10 @@
     border-radius: 5px;
     background-color: #000;
 }
-
+.edu_detail_contentbox_video>img{
+    width: 335px;
+    height: 200px;
+}
 .edu_detail_contentbox_wrap>ul>li>ul {
     display: flex;
     margin-bottom: 20px;

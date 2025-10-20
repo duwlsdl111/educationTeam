@@ -9,10 +9,8 @@ import Edudetail from "./edudetail/page"
 export default function Home() {
   return (
     <div>
-      <Header />
-      {/* <Edu /> */}
-      <Edudetail />
-      <Footer />
+      <Edu />
+      {/* <Edudetail /> */}
     </div>
   );
 }
