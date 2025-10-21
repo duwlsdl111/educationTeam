@@ -498,6 +498,10 @@
 
 /* ========== 페이지 레벨 토스트 ========== */
 .toast {
+    scale: 1.4;
+}
+
+.toast {
     position: fixed;
     top: 50%;
     left: 50%;

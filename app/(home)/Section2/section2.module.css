@@ -1,6 +1,7 @@
 .sec2 {
   width: 1300px;
-  height: 910px;
+  height: 880px;
+  margin-top: 0;
   /* background-color: aquamarine; */
 }
 
@@ -15,7 +16,7 @@
 .sec2title h2 {
   font-size: 30.5px;
   padding: 19px;
-  margin: 20px 0 20px 0;
+  margin: -50px 0 20px 0;
 }
 
 .map {
@@ -55,7 +56,7 @@
 .gyunggi {
   position: absolute;
   top: 145px;
-  left: 125px;
+  left: 115px;
 }
 
 .gangwon {
@@ -104,7 +105,7 @@
 .jeju {
   position: absolute;
   top: 688px;
-  left: 58px;
+  left: 48px;
   letter-spacing: -2px;
 }
 

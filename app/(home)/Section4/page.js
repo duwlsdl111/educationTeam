@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import Link from "next/link";
 import styles from "./section4.module.css";
 
 export default function Section4() {
@@ -20,8 +21,7 @@ export default function Section4() {
     if (!pos.current.isDown) return;
     const slider = scrollRef.current;
     e.preventDefault();
-    const clientX =
-      e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+    const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
     const x = clientX - slider.getBoundingClientRect().left;
     const walk = x - pos.current.startX;
     slider.scrollLeft = pos.current.scrollLeft - walk;
@@ -30,6 +30,16 @@ export default function Section4() {
   const handlePointerUp = () => {
     pos.current.isDown = false;
   };
+
+  // ✅ 썸네일 배열 (3개를 두 번 반복)
+  const thumbnails = [
+    "/images/thumbnail1.png",
+    "/images/thumbnail2.png",
+    "/images/thumbnail3.png",
+    "/images/thumbnail1.png",
+    "/images/thumbnail2.png",
+    "/images/thumbnail3.png",
+  ];
 
   return (
     <div className={styles.sec4}>
@@ -52,9 +62,16 @@ export default function Section4() {
             onTouchMove={handlePointerMove}
             onTouchEnd={handlePointerUp}
           >
-            {[...Array(6)].map((_, i) => (
+            {thumbnails.map((src, i) => (
               <div key={i} className={styles.contentbox}>
-                <div className={styles.contentvideo}></div>
+                <div className={styles.contentvideo}>
+                  {/* ✅ 썸네일 이미지 추가 */}
+                  <img
+                    src={src}
+                    alt={`thumbnail${i + 1}`}
+                    className={styles.thumbnailImg}
+                  />
+                </div>
                 <ul>
                   <li>
                     <p>영상 제목</p>
@@ -76,7 +93,9 @@ export default function Section4() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: "-15px" }}>영상 보러가기</p>
+                    <Link href="/edudetail">
+                      <p style={{ margin: "-15px",color:"#fff", fontSize:"22.5px"}}>영상 보러가기</p>
+                    </Link>
                   </li>
                 </ul>
               </div>

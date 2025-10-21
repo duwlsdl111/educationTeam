@@ -23,9 +23,9 @@
 }
 
 .weatherfarmdu {
-  width: 308px;
+  width: 270px;
   height: 341px;
-  margin: 380px 20px 0 0;
+  margin: 340px 20px 0 0;
   /* background-color: antiquewhite; */
 }
 
@@ -36,7 +36,8 @@
 .weatherinfo {
   width: 722px;
   height: 623px;
-  margin: 98px 0 0 0;
+  margin: 110px 0 0 0;
+  scale: 0.9;
 }
 
 .weathertext {
@@ -46,6 +47,7 @@
   display: flex;
   border-radius: 37.5px 37.5px 0 0;
   background-color: #86bda6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .weathericon {
@@ -63,7 +65,7 @@
   margin-top: 30px;
   margin-left: 45px;
   list-style: none;
-  font-size: 26.25;
+  font-size: 26.25px;
   color: #fff;
 }
 
@@ -87,7 +89,7 @@
   list-style: none;
   border-radius: 0 0 15px 15px;
   background-color: #f7d8b9;
-  /* opacity: 0.3; */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .vegetableItem {
@@ -190,9 +192,9 @@
   top: 0;
   /* ul 기준으로 원하는 위치 */
   left: 0;
-  width: 95.5%;
+  width: 100%;
   /* ul 전체 가로 */
-  height: 93.5%;
+  height: 100%;
   z-index: 1000;
   background-color: #f7d8b9;
   padding: 16px;

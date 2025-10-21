@@ -6,57 +6,85 @@ import styles from "./section3.module.css";
 export default function Section3() {
   const [weather, setWeather] = useState(null);
   const [selectedVeg, setSelectedVeg] = useState(null);
+  const [location, setLocation] = useState("위치 정보를 가져오는 중...");
 
-  useEffect(() => {
+useEffect(() => {
     const fetchWeather = async () => {
       try {
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=63a92c7bfcb0478b90d5faa8e8c88db2&units=metric&lang=kr`
         );
         const data = await response.json();
-        console.log("weather API data:", data); // -> 디버그: 콘솔에서 데이터 구조 확인
         setWeather({
-          main: data.weather?.[0]?.main ?? null, // 영어값 (예: "Clear")
+          main: data.weather?.[0]?.main ?? null,
           icon: data.weather?.[0]?.icon ?? null,
           temp: data.main ? Math.round(data.main.temp) : null,
-          pm: "좋음",
+          pm: "좋음", // 예시로 고정
         });
       } catch (error) {
         console.error("날씨 불러오기 실패:", error);
       }
     };
 
+    // 위치 정보 가져오기
+    const fetchLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const { latitude, longitude } = position.coords;
+            const geoResponse = await fetch(
+              `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=63a92c7bfcb0478b90d5faa8e8c88db2`
+            );
+            const geoData = await geoResponse.json();
+            const city = geoData?.[0]?.local_names?.ko || geoData?.[0]?.name || "위치 알 수 없음";
+            setLocation(city); // 위치를 설정
+          },
+          (error) => {
+            // 위치 정보를 가져올 수 없는 경우
+            console.error("위치 정보 접근 실패:", error);
+            setLocation("위치 정보를 가져올 수 없습니다."); // 오류 메시지 설정
+          }
+        );
+      } else {
+        setLocation("위치 권한을 허용해야 날씨를 볼 수 있습니다.");
+      }
+    };
+
     fetchWeather();
+    fetchLocation(); // 위치 정보 가져오기
   }, []);
 
-  // 영어 -> 한글 매핑 함수 (안전하게 처리)
+  // 날씨 관련 변수 설정
   const weatherKorean = {
     Clear: "맑음",
     Rain: "비",
     Snow: "눈",
     Clouds: "구름",
     Wind: "바람",
-    // 한파(Cold)는 API에서 바로 주지 않을 수 있음. 필요하면 조건 추가
   };
 
-  // 안전하게 한글 날씨 계산 (weather가 없으면 빈 문자열)
-  const koreanWeather = weather?.main
-    ? weatherKorean[weather.main] || weather.main
-    : "";
-
-  // weather 이미지 매핑 (한글 기준)
   const weatherImages = {
     맑음: "sunny.png",
     비: "rain.png",
     눈: "snow.png",
     바람: "windy.png",
-    구름: "cloud.png",
+    구름: "sunny.png",
     한파: "cold.png",
   };
 
-  // farmdu 이미지 (한글 기준)
+  const weatherTextMap = {
+    Clear: "맑은 날",
+    Rain: "비 오는 날",
+    Snow: "눈 오는 날",
+    Clouds: "맑은 날", // 구름 많은 날은 맑은 날로 표시
+    Wind: "바람 부는 날",
+    Cold: "한파인 날",
+  };
+
+  // 날씨 이미지 매핑
   const getFarmduImage = () => {
-    if (!koreanWeather) return "/images/defaultfarmdu.png";
+    if (!weather) return "/images/defaultfarmdu.png";
+    const koreanWeather = weatherKorean[weather.main] || weather.main;
     switch (koreanWeather) {
       case "비":
         return "/images/rainfarmdu.png";
@@ -321,15 +349,6 @@ export default function Section3() {
 };
 
 
-  const weatherTextMap = {
-    Clear: "맑은 날",
-    Rain: "비 오는 날",
-    Snow: "눈 오는 날",
-    Clouds: "맑은 날", // 구름 많은 날은 맑은 날로 표시
-    Wind: "바람 부는 날",
-    Cold: "한파인 날",
-  };
-
   const vegetables = Object.keys(vegetableImages);
 
   const handleClick = (veg) => {
@@ -351,23 +370,21 @@ export default function Section3() {
           <ul>
             <li className={styles.weathertext}>
               <div className={styles.weathericon}>
-                {koreanWeather ? (
+                {weather?.main && (
                   <img
                     src={`/images/${
-                      weatherImages[weather.main] || "sunny.png"
+                      weatherImages[weatherKorean[weather.main]] || "sunny.png"
                     }`}
-                    alt={weather.main}
+                    alt={weather?.main}
                   />
-                ) : (
-                  <p>불러오는 중...</p>
                 )}
               </div>
               <ul>
-                <li>오늘의 날씨는</li>
+                <li style={{ marginLeft:"0"}}>오늘의 날씨는 | 현위치 : {location} </li>
                 <li>
-                  {koreanWeather ? (
+                  {weather ? (
                     <>
-                      <p>{koreanWeather}</p>
+                      <p>{weatherKorean[weather.main]}</p>
                       <p>|</p>
                       <p>{weather.temp}°C</p>
                       <p>|</p>
@@ -377,6 +394,7 @@ export default function Section3() {
                     <p>불러오는 중...</p>
                   )}
                 </li>
+                
               </ul>
             </li>
 

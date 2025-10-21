@@ -1,7 +1,7 @@
 .sec4 {
   width: 1440px;
   height: 820px;
-  margin: 10% auto 10% 0;
+  margin: 0 auto 10% 0;
 }
 
 .sec4title {
@@ -47,6 +47,7 @@
 }
 
 .contentwrap {
+  width: 900px;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -74,6 +75,7 @@
   height: 522px;
   margin-top: 138px;
   border-radius: 8px;
+  /* scale: 0.9; */
   background-color: #8abd92;
 }
 
@@ -83,6 +85,10 @@
   margin-left: 18px;
   margin-top: 18px;
   background-color: #fdf4de;
+}
+.contentvideo>img{
+  width: 322px;
+  height: 216px;
 }
 
 .contentbox>ul>li {
@@ -120,9 +126,10 @@
 }
 
 .contentsubmit {
-  width: 286px;
+  width: 322px;
   height: 54px;
   margin-left: 18px;
   border-radius: 37.5px;
   background-color: #157c3e;
 }
+

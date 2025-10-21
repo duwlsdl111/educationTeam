@@ -91,7 +91,7 @@ export default function RelatedRail({ items = [], baseId = '' }) {
               draggable={false}
             />
             <div className={styles.overlay}>
-              <h3 className={styles.name}>{it.name}</h3>
+              <h3 className={styles.name}>{it.cat}</h3>
               <div className={styles.price}>
                 {(it.price ?? 0).toLocaleString()}원
               </div>

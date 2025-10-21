@@ -1,0 +1,161 @@
+.edu_detail_banner {
+    width: 100vw;
+    height: auto;
+    margin: 95px auto 0 auto;
+    /* background-color: #157C3E; */
+    /* position: relative; */
+}
+
+/* 배너 이미지 */
+.edu_detail_banner > img {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 전체 랩 */
+.edu_detail_wrap {
+    width: 1440px;          /* 고정 폭 */
+    height: 1600px;
+    margin: 0 auto;         /* 화면 중앙 정렬 */
+    padding: 0;
+    position: relative;     /* 이미지 절대 위치용 */
+    overflow: hidden;       /* wrap 밖으로 넘친 이미지 숨김 */
+    box-sizing: border-box;
+}
+
+
+
+/* 컨텐츠 박스 */
+/* 컨텐츠 박스 */
+/* 컨텐츠 박스 */
+/* 컨텐츠 박스 */
+.edu_detail_contentbox {
+    width: 1200px;
+    height: 500px;
+    margin-left: 100px;
+    margin-top: 160px;
+    /* background-color: #18ee6a; */
+}
+
+.edu_detail_contentbox>.edu_detail_contentbox_title {
+    width: 340px;
+    height: 75px;
+    margin: 0 auto;
+    border-radius: 50px 50px 0 0;
+    background-color: #b9d8c5;
+}
+
+.edu_detail_contentbox_title>p {
+    font-size: 40px;
+    color: #fff;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.edu_detail_contentbox_wrap {
+    width: 1200px;
+    height: 360px;
+    margin-bottom: 100px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+.edu_detail_contentbox_wrap>ul {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edu_detail_contentbox_wrap>ul>li {
+    list-style: none;
+    width: 360px;
+    height: 300px;
+    margin-top: 6px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #8abd92;
+}
+
+.edu_detail_contentbox_video {
+    width: 335px;
+    height: 200px;
+    margin: 12px 12px 20px 12px;
+    border-radius: 5px;
+    background-color: #000;
+}
+.edu_detail_contentbox_video>img{
+    width: 335px;
+    height: 200px;
+}
+.edu_detail_contentbox_wrap>ul>li>ul {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.edu_detail_contentbox_wrap>ul>li>ul>li {
+    font-size: 20px;
+    color: #fff;
+    list-style: none;
+    display: flex;
+    width: 150px;
+    height: 45px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #157C3E;
+}
+.streamingwrap{
+    width: 1400px;
+    height: 855px;
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-end;  /* 버튼 오른쪽 정렬 */
+}
+.streamingwrap>button{
+    cursor: pointer;
+    display: flex;
+    float: right;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 175px;
+    height: 50px;
+    color: #fff;
+    font-size: 22.5px;
+    border: none;
+    border-radius: 75px;
+    background-color: #157C3E;
+}
+.streamingwrap>button>img{
+    width: 29px;
+    height: 25px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.edu_videobox{
+    width: 100%;
+    height: 830px;
+    background-color: #9a9797;
+    /* 글씨 표시용 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 100px;
+    /* 글씨 표시용 */
+}
+.streamingwrap>p{
+    float: right;
+    margin-top: 20px;
+    font-size: 27px;
+    color: #808080;
+}
