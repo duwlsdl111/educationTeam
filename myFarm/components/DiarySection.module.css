@@ -1,0 +1,1484 @@
+/* ------------------------- 스케치북 ------------------------- */
+/* 스케치북 도화지 */
+.calendarContainer {
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #000;
+  width: 100%;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 70px;
+  z-index: 1;
+  font-size: 16px;
+}
+
+/* 내부 고정 프레임 */
+.innerFrame {
+  width: 85%;
+  height: 485px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  /* 좌우 동일 여백 (원하는 수치로) */
+}
+
+/* ------------------------- 상단 타이틀 ------------------------- */
+.monthHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.monthTitleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.monthTitleWrap h2 {
+  color: var(--orange);
+  font-weight: bold;
+  font-size: inherit;
+  margin: 0;
+}
+
+.arrowBtn {
+  background: none;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+  color: var(--orange);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+  transform: scale(1.2);
+}
+
+/* 오른쪽 글쓰기 버튼 */
+.writeBtn {
+  position: absolute;
+  right: 7.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--orange);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 30px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.writeBtn:hover {
+  background-color: #ff9c32;
+}
+
+
+.viewDeleteBtn {
+  position: absolute;
+  right: 17.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--green);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.viewDeleteBtn:hover {
+  background-color: #065726;
+}
+
+.backBtn {
+  position: absolute;
+  right: 7.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--orange);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.backBtn:hover {
+  background-color: #ff9c32;
+}
+
+
+/* ------------------------- 달력 ------------------------- */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar th {
+  border: 2px solid var(--orange);
+  width: calc(80% / 7);
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  background-color: #fffaf3;
+}
+
+.calendar td {
+  border: 2px solid var(--orange);
+  width: calc(80% / 7);
+  height: calc(450px / 6);
+  text-align: center;
+  vertical-align: top;
+  font-weight: 700;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.sun {
+  color: red;
+}
+
+.sat {
+  color: #126F9C;
+}
+
+.today {
+  background-color: #ffeccc;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* ------------------------- 글쓰기 폼 ------------------------- */
+.writeForm {
+  width: 100%;
+  border: 2px solid var(--orange);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 475px;
+  box-sizing: border-box;
+}
+
+.writeHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-height: 100%;
+  height: 35px;
+  border-bottom: 2px solid var(--orange);
+}
+
+.writeDate {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  font-weight: 500;
+  color: #6B6B6B;
+  border-right: 2px solid var(--orange);
+  padding: 0 5px;
+  font-size: 1rem;
+}
+
+.writeTitle {
+  width: 300px;
+}
+
+.writeTitle::placeholder {
+  color: #6B6B6B;
+  width: 300px;
+}
+
+.writeTitle,
+.region {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border-right: 2px solid var(--orange);
+  gap: 5px;
+  padding: 0 5px;
+}
+
+.writeTitle input {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.writeHeader select {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.region,
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px;
+}
+
+.writeContent {
+  width: 100%;
+  height: 340px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--orange);
+}
+
+.writeContent::placeholder {
+  color: #6B6B6B;
+}
+
+.writeFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  max-height: 100px;
+}
+
+.photoUpload label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-right: 2px solid var(--orange);
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.photoFile {
+  flex: 1;
+  /* 남은 공간 채움 */
+  min-width: 0;
+  /* flex 아이템 오버플로 방지 */
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* ✅ 미리보기 박스 스타일 */
+.previewBox {
+  width: 120px;
+  height: 90px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.previewBox img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border: 1px solid var(--orange);
+}
+
+/* ✅ X 버튼을 이미지 오른쪽에 작게 표시 */
+.deleteBtn {
+  display: flex;
+  color: black;
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  margin-left: 2px;
+  user-select: none;
+  border: none;
+  background-color: transparent;
+}
+
+.deleteBtn:hover {
+  color: var(--orange);
+}
+
+.saveBtn {
+  background-color: var(--orange);
+  color: #fff;
+  border: none;
+  height: 100px;
+  width: 100px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.saveBtn:hover {
+  background-color: #ff9c32;
+}
+
+.saveBtn.green {
+  background-color: var(--green);
+}
+
+.saveBtn.green:hover {
+  background-color: #065726;
+}
+
+/* ------------------------- 📘 추가된 스타일 ------------------------- */
+
+/* 🔸 달력 셀 안 제목 표시 */
+.dayNumber {
+  font-weight: 600;
+}
+
+.diaryTitle {
+  padding: 3px 0;
+  margin-top: 5px;
+  font-size: 12px;
+  background-color: var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.viewBtnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ///////////////////////////768 ~ 1023//////////////////////////////////////// */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .monthTitleWrap {
+    font-size: 1.3rem;
+  }
+
+  .writeBtn {
+    padding: 8px 15px;
+    font-size: .9rem;
+  }
+
+  .viewDeleteBtn {
+    position: absolute;
+    right: 17.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+    font-size: .9rem;
+  }
+
+  .viewDeleteBtn:hover {
+    background-color: #065726;
+  }
+
+  .backBtn {
+    position: absolute;
+    right: 7.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--orange);
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: .9rem;
+  }
+
+  .writeHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-height: 100%;
+    height: 45px;
+  }
+
+  .writeDate {
+    height: 45px;
+    padding: 0 3px;
+    font-size: .9em;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .writeTitle,
+  .region {
+    height: 45px;
+    gap: 5px;
+    padding: 0 3px;
+    font-size: .9rem;
+
+  }
+
+  .writeTitle input {
+    font-size: .9rem;
+    min-width: 0;
+  }
+
+  .writeTitle {
+    width: 150px;
+    flex-direction: row;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .writeTitle::placeholder {
+    color: #6B6B6B;
+    width: 200px;
+  }
+
+
+  .region {
+    width: 140px;
+  }
+
+  .region,
+  .weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 3px;
+    font-size: .9em;
+  }
+
+  .weather {
+    /* background-color: red; */
+    width: 100px;
+  }
+
+  .writeContent {
+    padding: 15px;
+    font-size: .9rem;
+  }
+
+  .writeContent::-webkit-input-placeholder {
+    font-size: .9rem;
+    color: #6B6B6B;
+  }
+
+  .photoFile {
+    flex: 1;
+    /* 남은 공간 채움 */
+    min-width: 0;
+    /* flex 아이템 오버플로 방지 */
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 0 5px;
+    gap: 10px;
+  }
+
+  .innerFrame {
+    width: 85%;
+    height: 485px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    /* 좌우 동일 여백 (원하는 수치로) */
+
+  }
+
+  .calendarContainer {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #000;
+    width: 100%;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 70px;
+    z-index: 1;
+  }
+
+  .saveBtn {
+    height: 100px;
+    width: 100px;
+  }
+
+  .imgInput {
+    font-size: .9rem;
+    max-width: 130px;
+  }
+
+  .viewDeleteBtn {
+    right: 20.5%;
+    top: 50%;
+    border-radius: 10px;
+    padding: 8px 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: .9rem;
+  }
+
+  .backBtn {
+    padding: 8px 8px;
+    font-size: .9rem;
+  }
+
+  .writeForm .writeHeader .writeDate .dateYear {
+    display: none;
+  }
+
+
+
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 550px;
+    height: auto;
+    padding-bottom: 12px;
+  }
+
+  .sketchBookWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .springImg {
+    top: -2.5%;
+    width: 90%;
+  }
+
+  .calendarContainer {
+    padding-top: 48px;
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  /* 헤더 2줄: (1행) 날짜/지역/날씨 + (2행) 제목 */
+  .writeHeader {
+    display: flex;
+    flex-wrap: wrap;
+    /* 줄바꿈 허용 */
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--orange);
+    gap: 0;
+    /* 칸 사이 여백 제거 (칸 내부에서만 간격) */
+  }
+
+  /* 1행: 폭 고정 (보더 포함 계산) */
+  .writeHeader>.writeDate {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    border-right: 1px solid var(--orange);
+    white-space: nowrap;
+  }
+
+  .writeHeader>.region,
+  .writeHeader>.weather {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    /* ✅ flex만 사용 */
+    align-items: center;
+    justify-content: center;
+    /* 라벨+셀렉트를 덩어리로 가운데 */
+    padding: 0 6px;
+    border-right: 1px solid var(--orange);
+    column-gap: 6px;
+    /* 라벨-셀렉트 간격 */
+    white-space: nowrap;
+  }
+
+  .writeHeader>.weather {
+    border-right: none;
+  }
+
+  /* 라벨 고정, 셀렉트가 남은 공간 채우기 (flex만) */
+  .region label,
+  .weather label {
+    flex: 0 0 auto;
+  }
+
+  .region select,
+  .weather select {
+    flex: 1 1 0;
+    /* ✅ 남은 폭을 차지 */
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* 2행: 제목 풀 폭 */
+  .writeHeader>.writeTitle {
+    order: 2;
+    flex: 0 0 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* 라벨-인풋 간격 */
+    padding: 0 8px;
+    border-top: 1px solid var(--orange);
+    border-right: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .writeContent {
+    font-size: 1em;
+  }
+
+  .writeContent::placeholder {
+    font-size: .9em;
+    color: #6B6B6B;
+    opacity: 1;
+    font-family: inherit;
+  }
+
+  /* 년도 숨김(선택) */
+
+  .writeDate .dateYear {
+    display: none;
+  }
+
+  /* 파일 이름이 넘치지 않게 자르기 */
+  .photoFile {
+    overflow: hidden;
+    /* ✅ 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis;
+    /* ✅ '...' 표시 */
+    white-space: nowrap;
+    /* ✅ 줄바꿈 방지 */
+    min-width: 0;
+    /* ✅ flex 내부 오버플로 방지 */
+  }
+
+  .writeFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .8em;
+    max-height: 70px;
+  }
+
+  /* 파일 입력 버튼이 너무 길어지지 않게 */
+  .imgInput {
+    max-width: 100px;
+    /* ✅ 폭 제한 */
+    flex-shrink: 0;
+    /* ✅ 줄어드는 걸 방지 */
+  }
+
+  /* 파일명 텍스트 숨기기 (필요하면) */
+  .photoFile input[type="file"]::-webkit-file-upload-button {
+    overflow: hidden;
+  }
+
+  /* 선택된 파일 이름 아예 안 보이게 하고 싶다면: */
+  .photoFile input[type="file"] {
+    color: transparent;
+    /* ✅ 파일명 텍스트 숨김 */
+  }
+
+
+  .writeBtn {
+    right: 7.5%;
+    padding: 7px 14px;
+    font-size: 0.9em;
+  }
+
+  .calendar th,
+  .calendar td {
+    font-size: 0.9rem;
+  }
+
+  .viewDeleteBtn {
+    padding: 7px;
+    font-size: .8em;
+    right: 19%;
+  }
+
+  .backBtn {
+    padding: 7px;
+    font-size: .8em;
+  }
+}
+
+/* ///////////////////400~500///////////////////////////// */
+@media (min-width: 400px) and (max-width: 550px) {
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .calendar th {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    background-color: #fffaf3;
+  }
+
+  .calendar td {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: calc(300px / 6);
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    padding-top: 5px;
+    cursor: pointer;
+  }
+
+  .calendarContainer {
+    min-height: 450px;
+  }
+
+  .monthTitleWrap {
+    font-size: 18px;
+  }
+
+  .sketchBookWrapper {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
+  }
+
+  .springImg {
+    top: -2.1%;
+    width: 90%;
+  }
+
+  .calendarContainer {
+    padding-top: 30px;
+    /* 스프링 여유 */
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  /* ───────── 메뉴: 스케치북 '밖' 아래 가로 탭 ───────── */
+  .sideMenu {
+    order: 2;
+    width: 100%;
+    max-width: 550px;
+    height: 35px;
+    /* 스케치북 너비와 맞춤 */
+    padding: 0 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    margin-top: 10px;
+    font-size: 0.6em;
+
+  }
+
+  /* 달력 폰트 살짝 축소 */
+  .calendar th,
+  .calendar td {
+    font-size: 0.9rem;
+  }
+
+  .writeBtn {
+    right: 7.5%;
+    padding: 5px 5px;
+    font-size: 0.8em;
+  }
+
+
+
+
+
+  /* 헤더 2줄: (1행) 날짜/지역/날씨 + (2행) 제목 */
+  .writeHeader {
+    display: flex;
+    flex-wrap: wrap;
+    /* 줄바꿈 허용 */
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--orange);
+    gap: 0;
+    font-size: 0.7em;
+    /* 칸 사이 여백 제거 (칸 내부에서만 간격) */
+  }
+
+  /* 1행: 폭 고정 (보더 포함 계산) */
+  .writeHeader>.writeDate {
+    flex: 0 0 43%;
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    border-right: 1px solid var(--orange);
+    font-size: .95em;
+    white-space: nowrap;
+  }
+
+  .writeHeader>.region,
+  .writeHeader>.weather {
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    /* ✅ flex만 사용 */
+    align-items: center;
+    justify-content: center;
+    /* 라벨+셀렉트를 덩어리로 가운데 */
+    padding: 0 6px;
+    border-right: 1px solid var(--orange);
+    column-gap: 6px;
+    /* 라벨-셀렉트 간격 */
+    white-space: nowrap;
+  }
+
+  .writeHeader>.region {
+    flex: 0 0 30%;
+  }
+
+  .writeHeader>.weather {
+    flex: 0 0 25%;
+
+  }
+
+  .writeHeader>.weather {
+    border-right: none;
+  }
+
+  /* 라벨 고정, 셀렉트가 남은 공간 채우기 (flex만) */
+  .region label,
+  .weather label {
+    flex: 0 0 auto;
+  }
+
+  .region select,
+  .weather select {
+    flex: 1 1 0;
+    /* ✅ 남은 폭을 차지 */
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* 2행: 제목 풀 폭 */
+  .writeHeader>.writeTitle {
+    order: 2;
+    flex: 0 0 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* 라벨-인풋 간격 */
+    padding: 0 8px;
+    border-top: 1px solid var(--orange);
+    border-right: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .writeContent {
+    font-size: 1em;
+  }
+
+  .writeContent {
+    width: 100%;
+    height: 210px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--orange);
+  }
+
+  .writeForm {
+    width: 100%;
+    border: 2px solid var(--orange);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 330px;
+    box-sizing: border-box;
+  }
+
+
+
+
+  .photoUpload label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-right: 2px solid var(--orange);
+    font-weight: 700;
+    color: var(--orange);
+  }
+
+  .photoFile {
+    width: 70px;
+    height: 70px;
+  }
+
+  .saveBtn {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* ✅ 미리보기 박스 스타일 */
+  .previewBox {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .previewBox img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border: 1px solid var(--orange);
+  }
+
+  /* 파일 이름이 넘치지 않게 자르기 */
+  .photoFile {
+    overflow: hidden;
+    /* ✅ 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis;
+    /* ✅ '...' 표시 */
+    white-space: nowrap;
+    /* ✅ 줄바꿈 방지 */
+    min-width: 0;
+    /* ✅ flex 내부 오버플로 방지 */
+  }
+
+  /* 파일 입력 버튼이 너무 길어지지 않게 */
+  .imgInput {
+    max-width: 80px;
+    /* ✅ 폭 제한 */
+    flex-shrink: 0;
+    /* ✅ 줄어드는 걸 방지 */
+  }
+
+  /* 파일명 텍스트 숨기기 (필요하면) */
+  .photoFile input[type="file"]::-webkit-file-upload-button {
+    overflow: hidden;
+  }
+
+  /* 선택된 파일 이름 아예 안 보이게 하고 싶다면: */
+  .photoFile input[type="file"] {
+    color: transparent;
+    /* ✅ 파일명 텍스트 숨김 */
+  }
+
+  .viewDeleteBtn {
+    padding: 5px;
+    font-size: .7em;
+    right: 20%;
+  }
+
+  .backBtn {
+    padding: 5px;
+    font-size: .7em;
+  }
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 400px) {
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  /* 스케치북 캔버스 */
+  .sketchBookWrapper {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    min-height: 360px;
+    /* 400~550보다 살짝 더 컴팩트 */
+  }
+
+  .springImg {
+    top: -2%;
+    width: 90%;
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  .calendarContainer {
+    padding-top: 26px;
+    /* 스프링 자리 */
+    min-height: 380px;
+    /* 달력/상세 공통 높이 느낌 통일 */
+    font-size: 12px;
+    /* 기본 폰트 살짝 축소 */
+  }
+
+  /* 달력 셀 크기/폰트 더 축소 */
+  .calendar th {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: 22px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    background-color: #fffaf3;
+    font-size: 12px;
+  }
+
+  .calendar td {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: calc(255px / 6);
+    /* 총 높이 줄였으니 셀 높이도 축소 */
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    padding-top: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  /* ───────── 메뉴: 스케치북 '밖' 아래 가로 탭 ───────── */
+  .sideMenu {
+    order: 2;
+    width: 100%;
+    max-width: 320px;
+    height: 28px;
+    padding: 0 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    margin-top: 8px;
+    font-size: 0.55em;
+    /* pill 글자 더 작게 */
+  }
+
+  .pass {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 18px;
+    width: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menuIcon {
+    max-width: 16px;
+    max-height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .sideMenu .menuItem {
+    border: 1px solid var(--orange);
+    width: 46px;
+    height: 18px;
+    padding: 0 !important;
+  }
+
+  .sideMenu .menuItem.orange,
+  .sideMenu .menuItem.blue,
+  .sideMenu .menuItem.green {
+    border: 1px solid currentColor;
+  }
+
+  .sideMenu .pill {
+    display: inline-block;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    white-space: nowrap;
+    min-width: 8px;
+    text-align: center;
+    padding: 1px 4px;
+    line-height: 1;
+  }
+
+  .monthTitleWrap {
+    font-size: 14px;
+  }
+
+
+  /* 상단 우측 버튼들 */
+  .writeBtn {
+    right: 6%;
+    padding: 4px 8px;
+    font-size: 0.75em;
+    border-radius: 8px;
+  }
+
+  .viewDeleteBtn {
+    right: 22%;
+    padding: 4px 6px;
+    font-size: 0.72em;
+    border-radius: 8px;
+  }
+
+  .backBtn {
+    right: 6%;
+    padding: 4px 6px;
+    font-size: 0.72em;
+    border-radius: 8px;
+  }
+
+
+  /* 헤더 2줄 레이아웃(날짜/지역/날씨 + 제목 한 줄) */
+  .writeHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: auto;
+    border-bottom: 1px solid var(--orange);
+    gap: 0;
+    font-size: 0.75em;
+  }
+
+  .writeHeader>.writeDate {
+    flex: 0 0 40%;
+    height: 36px;
+    border-right: 1px solid var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px;
+    white-space: nowrap;
+  }
+
+  .writeHeader>.region,
+  .writeHeader>.weather {
+    flex: 0 0 29%;
+    height: 36px;
+    border-right: 1px solid var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4px;
+    padding: 0 4px;
+    white-space: nowrap;
+  }
+
+  .writeHeader>.weather {
+    border-right: none;
+  }
+
+  .region label,
+  .weather label {
+    flex: 0 0 auto;
+  }
+
+  .region select,
+  .weather select {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .writeHeader>.writeTitle {
+    order: 2;
+    flex: 0 0 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px;
+    border-top: 1px solid var(--orange);
+    border-right: none;
+    white-space: nowrap;
+  }
+
+  .writeTitle input {
+    font-size: 1em;
+    min-width: 0;
+  }
+
+  /* 본문 텍스트 영역 */
+  .writeContent {
+    height: 190px;
+    /* 기존 340px → 축소 */
+    padding: 10px;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--orange);
+  }
+
+  /* 푸터(사진 + 저장) */
+  .writeFooter {
+    font-size: 0.8em;
+    max-height: 60px;
+  }
+
+  .photoUpload label {
+    width: 56px;
+    height: 56px;
+  }
+
+  .photoFile {
+    padding: 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .imgInput {
+    max-width: 70px;
+    flex-shrink: 0;
+  }
+
+  .previewBox {
+    width: 50px;
+    height: 50px;
+  }
+
+  .previewBox img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .saveBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9em;
+  }
+
+  /* 상단 버튼(글쓰기/삭제/목록)도 살짝 더 축소 */
+  .writeBtn,
+  .viewDeleteBtn,
+  .backBtn {
+    padding: 3px 6px;
+    font-size: 0.68em;
+    border-radius: 7px;
+  }
+
+  .viewDeleteBtn {
+    right: 21%;
+  }
+
+  .backBtn {
+    right: 6%;
+  }
+
+  /* 폼 전체 높이 더 줄이기 */
+  .writeForm {
+    height: 280px;
+  }
+
+  /* ── 헤더 2줄: 날짜/지역/날씨 + 제목 ── */
+  .writeHeader {
+    font-size: 0.70em;
+    /* 전반적인 글자 축소 */
+    border-bottom: 1px solid var(--orange);
+  }
+
+  .writeHeader>.writeDate,
+  .writeHeader>.region,
+  .writeHeader>.weather {
+    height: 28px;
+    /* 각 칸 높이 ↓ */
+  }
+
+  .writeDate {
+    font-size: 0.80em;
+    padding: 0 4px;
+  }
+
+  .region label,
+  .weather label {
+    font-size: 0.85em;
+  }
+
+  .region select,
+  .weather select {
+    font-size: 0.85em;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 4px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .writeHeader>.writeTitle {
+    height: 32px;
+    /* 제목 줄 높이 ↓ */
+    gap: 6px;
+    padding: 0 8px;
+  }
+
+  .writeTitle label {
+    font-size: 0.85em;
+  }
+
+  .writeTitle input {
+    font-size: 0.90em;
+    height: 24px;
+    min-width: 0;
+  }
+
+  /* 본문 텍스트 영역 더 낮게 */
+  .writeContent {
+    height: 140px;
+    /* 190px → 140px */
+    padding: 8px;
+    font-size: 0.85em;
+    border-bottom: 1px solid var(--orange);
+  }
+
+  /* ── 푸터(사진첨부 + 파일 + 저장) ── */
+  .writeFooter {
+    max-height: 44px;
+    gap: 6px;
+    font-size: 0.78em;
+  }
+
+  .photoUpload label {
+    width: 44px;
+    height: 44px;
+    font-size: 0.85em;
+  }
+
+  /* 파일 인풋 덩치 줄이기 */
+  .imgInput {
+    max-width: 64px;
+    font-size: 0.75em;
+  }
+
+  .imgInput::-webkit-file-upload-button {
+    padding: 2px 1px;
+    font-size: 0.5em;
+    line-height: 1.1;
+  }
+
+  .imgInput::file-selector-button {
+    padding: 2px 1px;
+    font-size: 0.em;
+    line-height: 1.1;
+  }
+
+  /*   .photoFile {
+    padding: 0 4px;
+  } */
+
+  /* 미리보기 썸네일 더 작게 */
+  .previewBox {
+    width: 44px;
+    height: 44px;
+  }
+
+  .previewBox img {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* 저장 버튼도 얇고 낮게 */
+  .saveBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 0.86em;
+  }
+
+  .diaryTitle {
+    font-size: 6px;
+    padding: 0 3px;
+    line-height: 1.05;
+  }
+
+  .writeFooter {
+    align-items: flex-end;
+    /* center → flex-end */
+    height: 44px;
+  }
+
+  .writeForm {
+    display: flex;
+    flex-direction: column;
+    height: 280px;
+    /* 폼은 고정 높이 */
+  }
+
+  .writeHeader {
+    flex: 0 0 auto;
+  }
+
+  .writeContent {
+    flex: 1 1 auto;
+    /* ← 남는 공간을 본문이 채움 */
+    min-height: 0;
+    height: auto;
+    /* 기존 height 제거/덮어쓰기 */
+  }
+
+  .writeFooter {
+    flex: 0 0 auto;
+    align-items: flex-end;
+    height: 44px;
+  }
+}

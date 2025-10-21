@@ -1,0 +1,913 @@
+/* 전체 섹션 컨테이너 */
+.sectionWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    --orange: #E47C14;
+    --green: #157C3E;
+    --blue: #126F9C;
+}
+
+/* ------------------------ */
+/* 왼쪽 박스 (출석체크 영역) */
+/* ------------------------ */
+.leftBoxWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    /* 임시 색상 - 필요시 제거 */
+}
+
+.attendanceBox {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    max-height: 700px;
+    border: 2px solid #2e8b57;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.titleArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.titleArea p {
+    width: 80px;
+    border-bottom: 2px solid var(--orange);
+    text-align: right;
+}
+
+.orangeText {
+    color: #ff7f27;
+    font-weight: bold;
+}
+
+.greenText {
+    color: #2e8b57;
+    font-size: 1.6rem;
+    margin-top: 4px;
+}
+
+.grapeArea {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.grapeImg {
+    width: 480px;
+    height: 580px;
+    object-fit: contain;
+}
+
+.characterleft {
+    position: absolute;
+    bottom: 40px;
+    right: -13px;
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+}
+
+.grapeClick {
+    position: absolute;
+    bottom: 13px;
+    right: 29px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 빈 슬롯 및 채움 이미지를 얹을 포도알 슬롯 */
+.grapeSlot {
+    position: absolute;
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.grapeDot {
+    position: absolute;
+    inset: 0;
+    width: 137px;
+    height: 137px;
+    object-fit: contain;
+    animation: popIn 180ms ease-out;
+}
+
+/* ------------------------ */
+/* 오른쪽 박스 (4개 이미지 + 캐릭터) */
+/* ------------------------ */
+.rightBoxWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+}
+
+.rightBox {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    max-height: 700px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* ✅ 위/아래 균등 분배 */
+    box-sizing: border-box;
+    background-color: #fff;
+    /* 확인용 */
+    padding: 0;
+}
+
+/* ✅ 이미지 박스 영역 */
+.imageGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+    /* ✅ 상자 비율로 영역 확보 (2줄 이미지용) */
+}
+
+.imageItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    /* 2개씩 */
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.optionImg {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.imageItem p {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--orange);
+}
+
+/* 오른쪽 하단 캐릭터 */
+.characterArea {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.characterRight {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .sectionWrapper {
+        display: flex;
+        justify-content: space-between;
+        /* ✅ 각 박스를 좌우로 분리 */
+        align-items: flex-start;
+        width: 100%;
+        max-width: 768px;
+    }
+
+    /* ------------------------ */
+    /* 왼쪽 박스 (출석체크 영역) */
+    /* ------------------------ */
+    .leftBoxWrapper {
+        flex: 1;
+        /* ✅ 비율로 확장 */
+        max-width: 450px;
+        /* ✅ 최대폭 제한 */
+        height: 600px;
+    }
+
+    .attendanceBox {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 600px;
+        border: 2px solid #2e8b57;
+        position: relative;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .titleArea p {
+        width: 80px;
+        margin-bottom: 2px;
+    }
+
+    .orangeText {
+        color: #ff7f27;
+        font-weight: bold;
+    }
+
+    .greenText {
+        font-size: 1.3rem;
+    }
+
+    .grapeArea {
+        width: 100%;
+        max-width: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .grapeImg {
+        width: 450px;
+        height: 450px;
+        object-fit: contain;
+    }
+
+    .characterleft {
+        position: absolute;
+        bottom: 0px;
+        right: -4px;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .grapeClick {
+        position: absolute;
+        bottom: -15px;
+        right: 29px;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    /* 빈 슬롯 및 채움 이미지를 얹을 포도알 슬롯 */
+    .grapeSlot {
+        position: absolute;
+        width: 7%;
+        aspect-ratio: 1 / 1;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .grapeDot {
+        position: absolute;
+        inset: 0;
+        width: 105px;
+        height: 105px;
+        object-fit: contain;
+        animation: popIn 180ms ease-out;
+    }
+
+    /* ------------------------ */
+    /* 오른쪽 박스 (4개 이미지 + 캐릭터) */
+    /* ------------------------ */
+    .rightBoxWrapper {
+        height: 600px;
+        overflow-y: scroll;
+        /* ✅ 실제로 스크롤 되게 하지만 */
+        -webkit-overflow-scrolling: touch;
+        /* ✅ iOS 부드러운 터치 */
+        scrollbar-width: none;
+        /* ✅ Firefox용 스크롤바 숨김 */
+        flex: 1;
+        /* ✅ 나머지 공간 차지 */
+        max-width: 320px;
+        padding-top: 100px;
+        /* ✅ 위 여백 확보 */
+    }
+
+    .rightBoxWrapper::-webkit-scrollbar {
+        display: none;
+        /* ✅ 크롬/사파리 스크롤바 숨김 */
+    }
+
+    .rightBox {
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        /* ✅ 내부 콘텐츠 높이만큼 자동 확장 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        /* ✅ 위부터 순차 배치 */
+        box-sizing: border-box;
+        /* 확인용 */
+        padding: 20px 0 60px;
+        /* ✅ 위/아래 여백 추가 */
+        gap: 40px;
+        /* ✅ 각 요소 간 간격 */
+    }
+
+    /* ✅ 이미지 박스 영역 */
+    .imageGrid {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+        height: 100%;
+        /* ✅ 상자 비율로 영역 확보 (2줄 이미지용) */
+    }
+
+    .imageItem {
+        width: 100%;
+        /* ✅ 한 줄에 하나씩 */
+        max-width: 260px;
+        /* ✅ 너무 커지지 않게 제한 */
+    }
+
+    .optionImg {
+        width: 130px;
+        height: 130px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .imageItem p {
+        margin-top: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--orange);
+    }
+
+    /* 오른쪽 하단 캐릭터 */
+    .characterArea {
+        position: relative;
+        text-align: center;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .characterRight {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+}
+
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .sectionWrapper {
+        max-width: 550px;
+    }
+
+    /* ------------------------ */
+    /* 왼쪽 박스 (출석체크 영역) */
+    /* ------------------------ */
+    .leftBoxWrapper {
+        flex: 1;
+        /* ✅ 비율로 확장 */
+        max-width: 450px;
+        /* ✅ 최대폭 제한 */
+        height: 600px;
+    }
+
+    .attendanceBox {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 600px;
+        border: 2px solid #2e8b57;
+        position: relative;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .titleArea p {
+        width: 80px;
+        margin-bottom: 2px;
+    }
+
+    .orangeText {
+        color: #ff7f27;
+        font-weight: bold;
+    }
+
+    .greenText {
+        font-size: 1.3rem;
+    }
+
+    .grapeArea {
+        width: 100%;
+        max-width: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .grapeImg {
+        width: 450px;
+        height: 450px;
+        object-fit: contain;
+    }
+
+    .characterleft {
+        position: absolute;
+        bottom: 0px;
+        right: -4px;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .grapeClick {
+        position: absolute;
+        bottom: -15px;
+        right: 29px;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    /* 빈 슬롯 및 채움 이미지를 얹을 포도알 슬롯 */
+    .grapeSlot {
+        position: absolute;
+        width: 7%;
+        aspect-ratio: 1 / 1;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .grapeDot {
+        position: absolute;
+        inset: 0;
+        width: 105px;
+        height: 105px;
+        object-fit: contain;
+        animation: popIn 180ms ease-out;
+    }
+
+    /* ------------------------ */
+    /* 오른쪽 박스 (4개 이미지 + 캐릭터) */
+    /* ------------------------ */
+    .rightBoxWrapper {
+        height: 600px;
+        overflow-y: scroll;
+        /* ✅ 실제로 스크롤 되게 하지만 */
+        -webkit-overflow-scrolling: touch;
+        /* ✅ iOS 부드러운 터치 */
+        scrollbar-width: none;
+        /* ✅ Firefox용 스크롤바 숨김 */
+        flex: 1;
+        /* ✅ 나머지 공간 차지 */
+        max-width: 320px;
+        padding-top: 100px;
+        /* ✅ 위 여백 확보 */
+    }
+
+    .rightBoxWrapper::-webkit-scrollbar {
+        display: none;
+        /* ✅ 크롬/사파리 스크롤바 숨김 */
+    }
+
+    .rightBox {
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        /* ✅ 내부 콘텐츠 높이만큼 자동 확장 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        /* ✅ 위부터 순차 배치 */
+        box-sizing: border-box;
+        /* 확인용 */
+        padding: 20px 0 60px;
+        /* ✅ 위/아래 여백 추가 */
+        gap: 40px;
+        /* ✅ 각 요소 간 간격 */
+    }
+
+    /* ✅ 이미지 박스 영역 */
+    .imageGrid {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+        height: 100%;
+        /* ✅ 상자 비율로 영역 확보 (2줄 이미지용) */
+    }
+
+    .imageItem {
+        width: 100%;
+        /* ✅ 한 줄에 하나씩 */
+        max-width: 260px;
+        /* ✅ 너무 커지지 않게 제한 */
+    }
+
+    .optionImg {
+        width: 110px;
+        height: 110px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .imageItem p {
+        margin-top: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--orange);
+    }
+
+    /* 오른쪽 하단 캐릭터 */
+    .characterArea {
+        position: relative;
+        text-align: center;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .characterRight {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+}
+
+/* ///////////////////400~500///////////////////////////// */
+@media (min-width: 400px) and (max-width: 550px) {
+    .sectionWrapper {
+        max-width: 400px;
+    }
+
+    /* ------------------------ */
+    /* 왼쪽 박스 (출석체크 영역) */
+    /* ------------------------ */
+    .leftBoxWrapper {
+        flex: 1;
+        /* ✅ 비율로 확장 */
+        max-width: 300px;
+        /* ✅ 최대폭 제한 */
+        height: 350px;
+    }
+
+    .attendanceBox {
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        max-height: 350px;
+        border: 2px solid #2e8b57;
+        position: relative;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+
+    .titleArea p {
+        width: 60px;
+        margin-bottom: 2px;
+    }
+
+    .titleArea span {
+        font-size: 12px;
+    }
+
+    .orangeText {
+        color: #ff7f27;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .greenText {
+        font-size: 12px;
+    }
+
+    .grapeArea {
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .grapeImg {
+        width: 250px;
+        height: 250px;
+        object-fit: contain;
+    }
+
+    .characterleft {
+        position: absolute;
+        bottom: 10px;
+        right: -4px;
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+    }
+
+    .grapeClick {
+        position: absolute;
+        bottom: -5px;
+        right: 15px;
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    /* 빈 슬롯 및 채움 이미지를 얹을 포도알 슬롯 */
+    .grapeSlot {
+        position: absolute;
+        width: 7%;
+        aspect-ratio: 1 / 1;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .grapeDot {
+        position: absolute;
+        inset: 0;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        animation: popIn 180ms ease-out;
+    }
+
+    .rightBoxWrapper {
+        height: 350px;
+        overflow-y: scroll;
+        /* ✅ 실제로 스크롤 되게 하지만 */
+        -webkit-overflow-scrolling: touch;
+        /* ✅ iOS 부드러운 터치 */
+        scrollbar-width: none;
+        /* ✅ Firefox용 스크롤바 숨김 */
+        flex: 1;
+        /* ✅ 나머지 공간 차지 */
+        max-width: 100px;
+        padding-top: 150px;
+        /* ✅ 위 여백 확보 */
+    }
+
+    /* ✅ 이미지 박스 영역 */
+    .imageGrid {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        /* ✅ 상자 비율로 영역 확보 (2줄 이미지용) */
+    }
+
+    .imageItem {
+        width: 100%;
+        /* ✅ 한 줄에 하나씩 */
+        max-width: 100px;
+        /* ✅ 너무 커지지 않게 제한 */
+    }
+
+    .optionImg {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .imageItem p {
+        margin-top: 8px;
+        font-size: 0.9em;
+        font-weight: 500;
+        color: var(--orange);
+    }
+
+    /* 오른쪽 하단 캐릭터 */
+    .characterArea {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .characterRight {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        margin-top: 150px;
+        padding: 0;
+    }
+
+
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 400px) {
+    .mobileIntro {
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        /* 👈 중앙 → 위쪽으로 변경 */
+        padding-top: 40px;
+        /* 👈 위 여백 살짝 주기 */
+        gap: 6px;
+    }
+
+    .attendanceBox {
+        max-width: 320px;
+        max-height: 410px;
+    }
+
+    /* 오른쪽 박스 제거 */
+    .rightBoxWrapper {
+        display: none !important;
+    }
+
+    .leftBoxWrapper {
+        height: 410px;
+    }
+
+    /* 전체폭/여백 정리 */
+    .leftBoxWrapper,
+    .attendanceBox {
+        width: 100%;
+    }
+
+    .attendanceBox {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 처음 화면: 캐릭터만 보이게 */
+    .attendanceBox.isIntro .grapeArea {
+        display: none !important;
+    }
+
+    /* ← 핵심 */
+    .attendanceBox.isIntro .mobileIntro {
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .characterCenter {
+        width: 140px;
+        height: auto;
+    }
+
+    .grapeClick {
+        font-size: 12px;
+    }
+
+    /* 포도판을 연 뒤: 캐릭터 인트로 숨김 */
+    .attendanceBox.isBoard .mobileIntro {
+        display: none !important;
+    }
+
+    .attendanceBox.isBoard .grapeArea {
+        display: block;
+    }
+
+    /* 포도판 기본 스타일 */
+    .grapeArea {
+        position: relative;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .grapeImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .grapeSlot {
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+
+    .grapeDot {
+        width: 66px;
+        height: 66px;
+    }
+
+    .slotIndex {
+        font-size: 10px;
+    }
+
+    /* 작은 구간에서는 왼쪽 고정 캐릭터 숨김(보드 켜졌을 때 영역 겹침 방지) */
+    .characterleft {
+        display: none !important;
+    }
+
+    /* 닫기 버튼 */
+    .closeBtn {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #444;
+    }
+
+    /* 출석하기 버튼 */
+    .attendBtn {
+        display: block;
+        margin: 18px auto 10px auto;
+        padding: 10px 20px;
+        background-color: var(--green);
+        color: white;
+        font-size: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .attendBtn:hover {
+        background-color: #0f5e2f;
+    }
+
+    .titleArea {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* 👈 왼쪽 정렬 */
+        justify-content: flex-start;
+        width: 100%;
+        margin-left: 12px;
+        /* 👈 왼쪽 여백 살짝 주기 */
+        margin-top: 4px;
+        /* 👈 위쪽 여백 약간 */
+    }
+
+
+    .grapeClick {
+        position: relative;
+        /* ✅ 이미지 기준으로 아래 배치 */
+        top: 8px;
+        /* ✅ 이미지와 간격 */
+        display: block;
+        text-align: center;
+        /* ✅ 가운데 정렬 */
+        font-size: 13px;
+        font-weight: 500;
+        color: #333;
+        margin-left: 55px;
+        /* ✅ 가운데 정렬 유지 */
+    }
+}
+
+/* ✅ 401px 이상에서는 다시 보이게 */
+@media (min-width: 401px) {
+    .rightBoxWrapper {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}

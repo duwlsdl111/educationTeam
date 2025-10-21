@@ -1,0 +1,602 @@
+.myFarmWrapper {
+    --orange: #E47C14;
+    --green: #157C3E;
+    --blue: #126F9C;
+}
+
+/* ------------------------- 기본 레이아웃 ------------------------- */
+.myFarmWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 400px auto;
+}
+
+.sketchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1440px;
+}
+
+/* ------------------------- 사이드 메뉴 ------------------------- */
+.sideMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 200px;
+    height: 300px;
+    margin-top: -20%;
+}
+
+.pass {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.menuIcon {
+    max-width: 56px;
+    max-height: 45px;
+    object-fit: contain;
+}
+
+.menuItem {
+    width: 100%;
+    max-width: 135px;
+    height: 100%;
+    max-height: 45px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/* 버튼 색상별 */
+.orange {
+    color: var(--orange);
+    background-color: #ffffff;
+    border-left: 2px solid var(--orange);
+    border-bottom: 2px solid var(--orange);
+    border-top: 2px solid var(--orange);
+    border-right: none;
+}
+
+.blue {
+    color: var(--blue);
+    background-color: #ffffff;
+    border-left: 2px solid var(--blue);
+    border-bottom: 2px solid var(--blue);
+    border-top: 2px solid var(--blue);
+    border-right: none;
+}
+
+.green {
+    color: var(--green);
+    background-color: #ffffff;
+    border-left: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    border-top: 2px solid var(--green);
+    border-right: none;
+}
+
+/* 눌림 효과 */
+.pill {
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+    padding: 7px 0;
+    border-radius: 999px;
+    transition: all 0.25s ease;
+}
+
+.orange.active .pill {
+    background: var(--orange);
+    color: #fff;
+}
+
+.blue.active .pill {
+    background: var(--blue);
+    color: #fff;
+}
+
+.green.active .pill {
+    background: var(--green);
+    color: #fff;
+}
+
+/* ------------------------- 스케치북 ------------------------- */
+.sketchBookWrapper {
+    position: relative;
+    width: 900px;
+    min-height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 스프링 이미지 */
+.springImg {
+    position: absolute;
+    top: -3.2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: auto;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* 스케치북 도화지 */
+.calendarContainer {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #000;
+    width: 100%;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 70px;
+    z-index: 1;
+}
+
+/* 내부 고정 프레임 */
+.innerFrame {
+    width: 85%;
+    height: 485px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+/* ------------------------- 상단 타이틀 ------------------------- */
+.monthHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.monthTitleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.monthTitleWrap h2 {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.arrowBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--orange);
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+    transform: scale(1.2);
+}
+
+/* 오른쪽 글쓰기 버튼 */
+.writeBtn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 30px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.writeBtn:hover {
+    background-color: #ff9c32;
+}
+
+/* ------------------------- 달력 ------------------------- */
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.calendar th {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: 35px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    background-color: #fffaf3;
+}
+
+.calendar td {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: calc(450px / 6);
+    text-align: center;
+    vertical-align: top;
+    font-weight: 500;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.sun {
+    color: red;
+}
+
+.sat {
+    color: #126F9C;
+}
+
+.today {
+    background-color: #ffeccc;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.writeForm {
+    width: 100%;
+    border: 2px solid var(--orange);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 485px;
+    box-sizing: border-box;
+}
+
+.videoHeaderRow {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+    border-bottom: 2px solid var(--orange);
+    background-color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    height: 45px;
+    align-items: center;
+}
+
+.videoHeaderRow div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    border-right: 2px solid var(--orange);
+}
+
+.videoHeaderRow div:last-child {
+    border-right: none;
+}
+
+.videoBody {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.videoRow {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+    border-bottom: 2px solid var(--orange);
+    text-align: center;
+    align-items: center;
+    height: 150px;
+}
+
+.videoRow div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 2px solid var(--orange);
+    height: 150px;
+}
+
+.videoRow div:last-child {
+    border: none;
+}
+
+/* ------------------------ 선택 버튼 ------------------------ */
+.selectBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 2px solid var(--orange);
+    gap: 15px;
+}
+
+/* 선택 버튼 */
+.selectBtn {
+    background-color: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 60px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.selectBtn:hover {
+    background-color: #ff9c32;
+}
+
+.videoThumb {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 2px solid var(--orange);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .calendarContainer {
+        max-width: 768px;
+        font-size: 15px;
+    }
+
+    .videoHeaderRow,
+    .videoRow {
+        font-size: 0.9em;
+
+    }
+
+    .videoRow,
+    .videoRow div {
+        height: 100px;
+    }
+
+    .noteBox {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .videoThumb {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+    }
+
+    .videoHeaderRow,
+    .videoRow {
+        grid-template-columns: 0.5fr 1.5fr 1.2fr 1.8fr;
+    }
+
+
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .calendarContainer {
+        min-width: 550px;
+        font-size: 14px;
+        padding-top: 48px;
+    }
+
+    .videoHeaderRow,
+    .videoRow {
+        font-size: 0.9em;
+
+    }
+
+    .videoRow,
+    .videoRow div {
+        height: 80px;
+    }
+
+    .noteBox {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .videoThumb {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+    }
+
+    .videoHeaderRow,
+    .videoRow {
+        grid-template-columns: 0.5fr 1.5fr 1.2fr 1.8fr;
+    }
+
+}
+
+@media (min-width: 400px) and (max-width: 550px) {
+
+    .calendarContainer {
+        min-height: 450px;
+    }
+
+    .monthTitleWrap {
+        font-size: 18px;
+    }
+
+    .calendarContainer {
+        padding-top: 30px;
+        /* 스프링 여유 */
+    }
+
+    .innerFrame {
+        height: 350px;
+    }
+
+    .writeForm {
+        height: 350px;
+    }
+
+    .videoHeaderRow {
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+        border-bottom: 2px solid var(--orange);
+        background-color: #ffffff;
+        text-align: center;
+        font-weight: 700;
+        height: 30px;
+        align-items: center;
+    }
+
+    .videoHeaderRow div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        border-right: 2px solid var(--orange);
+    }
+
+    .videoHeaderRow {
+        font-size: 12px;
+    }
+
+    .videoRow {
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+        border-bottom: 2px solid var(--orange);
+        text-align: center;
+        align-items: center;
+        height: 80px;
+    }
+
+    .videoRow div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-right: 2px solid var(--orange);
+        height: 80px;
+    }
+
+    .videoThumb {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+
+    .videoBody {
+        font-size: 12px;
+    }
+
+    .totalRow {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+
+    .calendarContainer {
+        padding-top: 24px;
+        min-height: 350px;
+    }
+
+    .monthTitleWrap {
+        font-size: 14px;
+    }
+
+    .monthTitleWrap h2 {
+        font-size: 14px;
+    }
+
+    /* ← 직접 덮어쓰기 */
+    .arrowBtn {
+        font-size: 14px;
+    }
+
+    /* 선택: 아이콘 크기 정렬 */
+
+    .calendarContainer {
+        padding-top: 26px;
+        /* 스프링 여유 */
+    }
+
+    .innerFrame {
+        height: 314px;
+    }
+
+    .writeForm {
+        height: 280px;
+    }
+
+    .videoHeaderRow {
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+        border-bottom: 2px solid var(--orange);
+        background-color: #ffffff;
+        text-align: center;
+        font-weight: 700;
+        height: 30px;
+        align-items: center;
+    }
+
+    .videoHeaderRow div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        border-right: 2px solid var(--orange);
+    }
+
+    .videoHeaderRow {
+        font-size: 10px;
+    }
+
+    .videoRow {
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr 1fr 2fr;
+        border-bottom: 2px solid var(--orange);
+        text-align: center;
+        align-items: center;
+        height: 60px;
+    }
+
+    .videoRow div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-right: 2px solid var(--orange);
+        height: 60px;
+    }
+
+    .videoThumb {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .videoBody {
+        font-size: 10px;
+    }
+
+    .totalRow {
+        font-size: 10px;
+    }
+}

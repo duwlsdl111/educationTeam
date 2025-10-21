@@ -1,0 +1,854 @@
+.myFarmWrapper {
+  --orange: #E47C14;
+  --green: #157C3E;
+  --blue: #126F9C;
+}
+
+/* ------------------------- 기본 레이아웃 ------------------------- */
+.myFarmWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.sketchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  height: 680px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+/* ------------------------- 사이드 메뉴 ------------------------- */
+.sideMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 200px;
+  height: 300px;
+  margin-top: -20%;
+}
+
+.pass {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+}
+
+.menuIcon {
+  max-width: 56px;
+  max-height: 45px;
+  object-fit: contain;
+}
+
+.menuItem {
+  width: 100%;
+  max-width: 135px;
+  height: 100%;
+  max-height: 45px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: inherit;
+  /* 버튼이 부모(.pass)의 폰트를 물려받도록 */
+  line-height: 1;
+  /* 세로 정렬 깔끔 */
+}
+
+/* 버튼 색상별 */
+.orange {
+  color: var(--orange);
+  background-color: #ffffff;
+  border-left: 2px solid var(--orange);
+  border-bottom: 2px solid var(--orange);
+  border-top: 2px solid var(--orange);
+  border-right: none;
+}
+
+.blue {
+  color: var(--blue);
+  background-color: #ffffff;
+  border-left: 2px solid var(--blue);
+  border-bottom: 2px solid var(--blue);
+  border-top: 2px solid var(--blue);
+  border-right: none;
+}
+
+.green {
+  color: var(--green);
+  background-color: #ffffff;
+  border-left: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  border-top: 2px solid var(--green);
+  border-right: none;
+}
+
+/* 눌림 효과 */
+.pill {
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  padding: 7px 0;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.orange.active .pill {
+  background: var(--orange);
+  color: #fff;
+}
+
+.blue.active .pill {
+  background: var(--blue);
+  color: #fff;
+}
+
+.green.active .pill {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ------------------------- 스케치북 ------------------------- */
+.sketchBookWrapper {
+  position: relative;
+  width: 900px;
+  min-height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 16px;
+}
+
+/* 스프링 이미지 */
+.springImg {
+  position: absolute;
+  top: -3.2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 스케치북 도화지 */
+.calendarContainer {
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #000;
+  width: 100%;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 70px;
+  z-index: 1;
+}
+
+/* 내부 고정 프레임 */
+.innerFrame {
+  width: 85%;
+  height: 485px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+/* ------------------------- 상단 타이틀 ------------------------- */
+.monthHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.monthTitleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.monthTitleWrap h2 {
+  color: var(--orange);
+  font-weight: bold;
+  font-size: inherit;
+  margin: 0;
+}
+
+.arrowBtn {
+  background: none;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+  color: var(--orange);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+  transform: scale(1.2);
+}
+
+/* 오른쪽 글쓰기 버튼 */
+.writeBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--orange);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 30px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.writeBtn:hover {
+  background-color: #ff9c32;
+}
+
+/* ------------------------- 달력 ------------------------- */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar th {
+  border: 2px solid var(--orange);
+  width: calc(80% / 7);
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  background-color: #fffaf3;
+}
+
+.calendar td {
+  border: 2px solid var(--orange);
+  width: calc(80% / 7);
+  height: calc(450px / 6);
+  text-align: center;
+  vertical-align: top;
+  font-weight: 700;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.sun {
+  color: red;
+}
+
+.sat {
+  color: #126F9C;
+}
+
+.today {
+  background-color: #ffeccc;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* ------------------------- 글쓰기 폼 ------------------------- */
+.writeForm {
+  width: 100%;
+  border: 2px solid var(--orange);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 485px;
+  box-sizing: border-box;
+}
+
+.writeHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-height: 100%;
+  height: 35px;
+  border-bottom: 2px solid var(--orange);
+}
+
+.writeDate {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  font-weight: 700;
+  color: #868686;
+  border-right: 2px solid var(--orange);
+  padding: 0 5px;
+}
+
+.writeTitle {
+  width: 300px;
+}
+
+.writeTitle,
+.region {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border-right: 2px solid var(--orange);
+  gap: 5px;
+  padding: 0 5px;
+}
+
+.writeTitle input {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.writeHeader select {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.region,
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px;
+}
+
+.writeContent {
+  width: 100%;
+  height: 350px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--orange);
+}
+
+.writeFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.photoUpload label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-right: 2px solid var(--orange);
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.photoFile {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 0 5px;
+  gap: 10px;
+}
+
+/* ✅ 미리보기 박스 스타일 */
+.previewBox {
+  width: 120px;
+  height: 90px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.previewBox img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border: 1px solid var(--orange);
+}
+
+/* ✅ X 버튼을 이미지 오른쪽에 작게 표시 */
+.deleteBtn {
+  display: flex;
+  color: black;
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  margin-left: 2px;
+  user-select: none;
+  border: none;
+  background-color: transparent;
+}
+
+.deleteBtn:hover {
+  color: var(--orange);
+}
+
+.saveBtn {
+  background-color: var(--orange);
+  color: #fff;
+  border: none;
+  height: 100px;
+  width: 100px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.saveBtn:hover {
+  background-color: #ff9c32;
+}
+
+/* ------------------------- 📘 추가된 스타일 ------------------------- */
+
+/* 🔸 달력 셀 안 제목 표시 */
+.dayNumber {
+  font-weight: 600;
+}
+
+.diaryTitle {
+  padding: 2px 0;
+  margin-top: 5px;
+  font-size: 12px;
+  background-color: var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.viewBtnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+
+/* /////////////////////태블릿 구간: 768px ~ 1023px /////////////////////////*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* 태블릿 전용 스타일 */
+
+  .sketchContainer {
+    max-width: 768px;
+  }
+
+  .springImg {
+    top: -2.3%;
+  }
+
+  .sideMenu {
+    font-size: 1.1rem;
+  }
+
+  .monthTitleWrap {
+    font-size: 1.3rem;
+  }
+
+  .calendar {
+    font-size: 1rem;
+  }
+
+
+
+
+}
+
+
+/* === 550px ~ 767px: 스케치북 밖, 가로 탭 메뉴 === */
+@media (min-width: 550px) and (max-width: 767px) {
+
+
+  /* 위: 스케치북 / 아래: 메뉴 */
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 550px;
+    height: auto;
+    /* 필요 없으면 지워도 됨 */
+    padding-bottom: 12px;
+  }
+
+  .sketchBookWrapper {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .springImg {
+    top: -2.5%;
+    width: 90%;
+  }
+
+  .calendarContainer {
+    padding-top: 48px;
+    /* 스프링 여유 */
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  /* ───────── 메뉴: 스케치북 '밖' 아래 가로 탭 ───────── */
+  .sideMenu {
+    order: 2;
+    width: 100%;
+    max-width: 550px;
+    height: 35px;
+    /* 스케치북 너비와 맞춤 */
+    padding: 0 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    margin-top: 10px;
+    font-size: 0.8em;
+
+  }
+
+  /* 각 항목: 아이콘(삼각형) + 라벨 pill */
+  .pass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
+    /* 긴 라벨 줄바꿈 방지용 */
+    height: 42px;
+    width: 85px;
+  }
+
+  .menuIcon {
+    max-width: 30px;
+    max-height: 35px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .sideMenu .menuItem {
+    border: 1px solid var(--orange);
+    width: 85px;
+    height: 35px;
+    padding: 0 !important;
+  }
+
+  .sideMenu .menuItem.orange,
+  .sideMenu .menuItem.blue,
+  .sideMenu .menuItem.green {
+    border: 1px solid currentColor;
+  }
+
+  .sideMenu .pill {
+    display: inline-block;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  /* 달력 폰트 살짝 축소 */
+  .calendar th,
+  .calendar td {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ///////////////////400~500///////////////////////////// */
+@media (min-width: 400px) and (max-width: 550px) {
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .calendar th {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    background-color: #fffaf3;
+  }
+
+  .calendar td {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: calc(300px / 6);
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    padding-top: 5px;
+    cursor: pointer;
+  }
+
+  .calendarContainer {
+    min-height: 450px;
+  }
+
+  .monthTitleWrap {
+    font-size: 18px;
+  }
+
+  .sketchBookWrapper {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
+  }
+
+  .springImg {
+    top: -2.1%;
+    width: 90%;
+  }
+
+  .calendarContainer {
+    padding-top: 30px;
+    /* 스프링 여유 */
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  /* ───────── 메뉴: 스케치북 '밖' 아래 가로 탭 ───────── */
+  .sideMenu {
+    order: 2;
+    width: 100%;
+    max-width: 550px;
+    height: 35px;
+    /* 스케치북 너비와 맞춤 */
+    padding: 0 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    margin-top: 10px;
+    font-size: 0.6em;
+
+  }
+
+  /* 각 항목: 아이콘(삼각형) + 라벨 pill */
+  .pass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-width: 0;
+    /* 긴 라벨 줄바꿈 방지용 */
+    height: 20px;
+    width: 40px;
+  }
+
+  .menuIcon {
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .sideMenu .menuItem {
+    border: 1px solid var(--orange);
+    width: 50px;
+    height: 20px;
+    padding: 0 !important;
+  }
+
+
+  .sideMenu .menuItem.orange,
+  .sideMenu .menuItem.blue,
+  .sideMenu .menuItem.green {
+    border: 1px solid currentColor;
+  }
+
+  .sideMenu .pill {
+    display: inline-block;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    white-space: nowrap;
+    min-width: 10px;
+    text-align: center;
+    padding: 2px;
+  }
+
+  /* 달력 폰트 살짝 축소 */
+  .calendar th,
+  .calendar td {
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 400px) {
+  .sketchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  /* 스케치북 캔버스 */
+  .sketchBookWrapper {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    min-height: 360px;
+    /* 400~550보다 살짝 더 컴팩트 */
+  }
+
+  .springImg {
+    top: -2%;
+    width: 90%;
+  }
+
+  .innerFrame {
+    height: auto;
+  }
+
+  .calendarContainer {
+    padding-top: 26px;
+    /* 스프링 자리 */
+    min-height: 380px;
+    /* 달력/상세 공통 높이 느낌 통일 */
+    font-size: 12px;
+    /* 기본 폰트 살짝 축소 */
+  }
+
+  /* 달력 셀 크기/폰트 더 축소 */
+  .calendar th {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: 22px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    background-color: #fffaf3;
+    font-size: 12px;
+  }
+
+  .calendar td {
+    border: 2px solid var(--orange);
+    width: calc(80% / 7);
+    height: calc(255px / 6);
+    /* 총 높이 줄였으니 셀 높이도 축소 */
+    text-align: center;
+    vertical-align: top;
+    font-weight: 700;
+    padding-top: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  /* ───────── 메뉴: 스케치북 '밖' 아래 가로 탭 ───────── */
+  .sideMenu {
+    order: 2;
+    width: 100%;
+    max-width: 320px;
+    height: 28px;
+    padding: 0 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    margin-top: 8px;
+    font-size: 0.55em;
+    /* pill 글자 더 작게 */
+  }
+
+  .pass {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 18px;
+    width: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menuIcon {
+    max-width: 16px;
+    max-height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .sideMenu .menuItem {
+    border: 1px solid var(--orange);
+    width: 46px;
+    height: 18px;
+    padding: 0 !important;
+  }
+
+  .sideMenu .menuItem.orange,
+  .sideMenu .menuItem.blue,
+  .sideMenu .menuItem.green {
+    border: 1px solid currentColor;
+  }
+
+  .sideMenu .pill {
+    display: inline-block;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    white-space: nowrap;
+    min-width: 8px;
+    text-align: center;
+    padding: 1px 4px;
+    line-height: 1;
+  }
+
+  .monthTitleWrap {
+    font-size: 14px;
+  }
+}
