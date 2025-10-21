@@ -1,0 +1,549 @@
+/* ===== Base / Theme ===== */
+.page {
+    --ink: #2c2c2c;
+    --muted: #6b746d;
+    --paper: #157c3e7c;
+    --accent: #157c3e;
+    --accent-2: #0e5d2d;
+    --peach: #f6cfae;
+    --surface: #e2efe5;
+    --radius: 14px;
+    --shadow: 0 6px 24px rgba(20, 50, 30, .08);
+
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+    color: var(--ink);
+    background: #fff;
+}
+
+.title {
+    width: 100%;
+    max-width: 1440px;
+    margin: 3% auto;
+    text-align: center;
+    height: 80px;
+    font-size: 1.5rem;
+    letter-spacing: .2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #E47C14;
+    border-bottom: 2px solid #E47C14;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* ===== Map Section ===== */
+.mapSection {
+    margin: 5% 0 8% 0;
+}
+
+.mapWrap {
+    background: #c2dcc9;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 600px;
+}
+
+.koreaMap {
+    background: #9bc3a4;
+}
+
+.regionFocus {
+    background: #a9cbbb;
+    position: relative;
+}
+
+/* ===== Booking Section ===== */
+.sectionHead {
+    display: grid;
+    place-items: center;
+    height: 70px;
+    background: var(--peach);
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 3%;
+}
+
+.bookingGrid {
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Left: Gallery */
+.heroImg {
+    height: 600px;
+    border-radius: 12px;
+    background: url('/images/sample/farm-hero.jpg') center/cover no-repeat, #d7e7dd;
+    box-shadow: var(--shadow);
+}
+
+.thumbs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.thumb {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background: #a9cbbb;
+}
+
+/* ===== Right: Form ===== */
+.form {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: grid;
+    gap: 16px;
+}
+
+/* 공통 라벨(agreeBox 제외) */
+.form label:not(.agreeBox) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form span {
+    width: 110px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+/* 모든 인풋 사이즈 통일 */
+.form input,
+.dateInput {
+    flex: 1;
+    height: 50px;
+    padding: 0 16px;
+    border: 2px solid #157c3e;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.form p {
+    text-align: right;
+}
+
+/* ===== 인원 ===== */
+.peopleRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputWithLabel {
+    position: relative;
+    flex: 1;
+}
+
+.inputWithLabel::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: #157c3e;
+    pointer-events: none;
+    opacity: .85;
+}
+
+.inputWithLabel>input {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #157c3e;
+    border-radius: 10px;
+    background: #fff;
+    padding: 0 12px 0 50px;
+    /* 왼쪽 라벨 공간 */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+/* number 스핀 제거(선택) */
+.inputWithLabel>input::-webkit-outer-spin-button,
+.inputWithLabel>input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputWithLabel>input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ===== 개인정보 동의 ===== */
+.agreeBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    line-height: 1.4;
+    width: 100%;
+    margin-top: 1%;
+}
+
+.agreeBox p {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.agreeTextBox {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    border: 1.5px solid #157c3e;
+    border-radius: 6px;
+    overflow-y: scroll;
+    padding: 5px 8px;
+}
+
+.agreeTextBox p {
+    font-size: 0.852rem;
+    text-align: left;
+}
+
+/* 체크라인 */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.agreeBox input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #157c3e;
+    border-radius: 999px;
+    background: #fff;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .12);
+    transition: box-shadow .15s ease, transform .1s ease;
+}
+
+.agreeBox input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: -2px;
+    width: 8px;
+    height: 12px;
+    border: 3px solid #157c3e;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity .12s ease;
+}
+
+.agreeBox input[type="checkbox"]:checked::after {
+    opacity: 1;
+}
+
+/* 버튼 */
+.cta {
+    height: 60px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cta:hover {
+    background: var(--accent-2);
+}
+
+/* ===== 지도 영역 ===== */
+.mapWrap {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    /* 🔹 지도(왼쪽)가 더 넓게 */
+    align-items: stretch;
+    gap: 20px;
+    background: #c2dcc9;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+/* 지도 */
+.krmap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.krmap img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 지역명 */
+.citytitle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    padding-left: 20px;
+}
+
+.citytitle p {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.citytitle p:hover,
+.citytitle p.active {
+    color: #0e5d2d;
+}
+
+/* 오른쪽 이미지 */
+.currentmap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dbeadf;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.currentmap img {
+    width: 80%;
+    /* 🔹 사이즈 축소 */
+    max-width: 350px;
+    /* 🔹 상한 제한 */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.currentmap img:hover {
+    transform: scale(1.03);
+}
+
+
+/* ============================= */
+/* ====== RESPONSIVE GUIDE ======*/
+/* ============================= */
+@media (min-width: 1024px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .mapWrap {
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 1023px) {
+    .page {
+        padding: 20px 16px 48px;
+    }
+
+    .mapWrap {
+        grid-template-columns: 1fr;
+        min-height: 260px;
+    }
+
+    .bookingGrid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .heroImg {
+        height: 260px;
+    }
+
+    .thumb {
+        height: 60px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 550px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .sectionHead {
+        height: 54px;
+        font-size: 20px;
+    }
+
+    .mapWrap {
+        height: 300px;
+    }
+
+    .bookingGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* ===== Gallery 수정 ===== */
+    .gallery {
+        display: flex;
+        flex-direction: row;
+        /* 이미지 + 썸네일 나란히 */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .heroImg {
+        flex: 1;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        border-radius: 10px;
+    }
+
+    .thumbs {
+        display: flex;
+        flex-direction: column;
+        /* 🔹세로 배치 */
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        margin-top: 0;
+    }
+
+    .thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+    }
+
+    /* ===== Form ===== */
+    .form {
+        padding: 14px;
+        gap: 8px;
+    }
+
+    .form input,
+    .dateInput {
+        height: 48px;
+        font-size: 13.5px;
+    }
+
+    .cta {
+        height: 48px;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 392px) {
+    .page {
+        padding: 16px 12px 40px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .sectionHead {
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .mapWrap {
+        height: 250px;
+    }
+
+    .bookingGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* ===== Gallery: 이미지 + 썸네일 레이아웃 ===== */
+    .gallery {
+        display: flex;
+        flex-direction: row;
+        /* 이미지 + 썸네일 나란히 */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .heroImg {
+        flex: 1;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        /* 비율 고정 */
+        border-radius: 10px;
+    }
+
+    .thumbs {
+        display: flex;
+        flex-direction: column;
+        /* 🔹세로로 나열 */
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        margin-top: 0;
+    }
+
+    .thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+    }
+
+    /* ===== Form ===== */
+    .form {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .form span {
+        font-size: 13px;
+    }
+
+    .form input,
+    .dateInput {
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .cta {
+        height: 44px;
+        border-radius: 8px;
+    }
+}
